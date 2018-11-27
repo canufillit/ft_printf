@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/27 14:36:31 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/27 16:04:23 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,19 @@ typedef struct	s_printf
 	struct s_printf	*next;
 }				t_printf;
 
+typedef struct	s_fval
+{
+	char	c;
+	char	*(*f)(t_printf);
+}				t_fval;
+
+t_fval tab[] = {{'c', pf_ctos},
+				{'s', NULL},
+				{'p', JSP},
+				{'d', pf_itoa},
+				{'i', pf_itoa},
+				{'o', JSP},
+				{'u', JSP},
+				{'x', JSP},
+				{'X', JSP}}
 #endif
