@@ -6,7 +6,7 @@
 #    By: apeyret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:35:55 by apeyret           #+#    #+#              #
-#    Updated: 2018/11/22 16:48:21 by apeyret          ###   ########.fr        #
+#    Updated: 2018/11/27 17:19:45 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,8 @@ SRC = ft_atoi.c \
 	ft_exit.c \
 	ft_puttab.c \
 	ft_runtab.c \
-	ft_strccount.c
+	ft_strccount.c \
+	ft_intlen.c
 
 OBJ = $(SRC:.c=.o) 
 
