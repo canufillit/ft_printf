@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:27:39 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/12 13:49:34 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/27 14:29:53 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,5 @@ void	ft_putstr(char const *s)
 
 	if (!s)
 		return ;
-	count = 0;
-	while (s[count])
-	{
-		ft_putchar(s[count]);
-		count++;
-	}
+	ft_putchar(1, s, ft_strlen(s));
 }
