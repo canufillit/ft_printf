@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/27 15:09:39 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/27 17:07:32 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(void)
 
 	printf("\033[34;31m%%d:\n");
 	printf("%%d:   %d\n",	nb);
-	printf("%%d:   %i\n", 	nb);
 	printf("%%+d:  %+d\n",	nb);
 	printf("%%-d:  %-d\n",	nb);
 	printf("%%0d:  %0d\n",	nb);
@@ -31,5 +30,34 @@ int	main(void)
 	printf("%%.2s: %.2s\n",	str);
 	printf("%%.5s: %.5s\n",	str);
 
-	printf("\n\033[34;33m%%:\n");
+	printf("\n\033[34;33m%%hh:\n");
+	printf("%%hd:  %hd\n",	'a');
+	printf("%%hhd: %hhd\n",	'a');
+	printf("%%hi:  %hi\n",	'a');
+	printf("%%hhi: %hhi\n",	'a');
+	printf("%%ho:  %ho\n",	'a');
+	printf("%%hho: %hho\n",	'a');
+	printf("%%hu:  %hu\n",	'a');
+	printf("%%hhu: %hhu\n",	'a');
+	printf("%%hx:  %hx\n",	'a');
+	printf("%%hhx: %hhx\n",	'a');
+	printf("%%hX:  %hX\n",	'a');
+	printf("%%hhX: %hhX\n",	'a');
+
+	printf("\n\033[34;33m%%hh:\n");
+	printf("%%ld:  %ld\n",	'a');
+	printf("%%lld: %lld\n",	'a');
+	printf("%%li:  %li\n",	'a');
+	printf("%%lli: %lli\n",	'a');
+	printf("%%lo:  %lo\n",	'a');
+	printf("%%llo: %llo\n",	'a');
+	printf("%%lu:  %lu\n",	'a');
+	printf("%%llu: %llu\n",	'a');
+	printf("%%lx:  %lx\n",	'a');
+	printf("%%llx: %llx\n",	'a');
+	printf("%%lX:  %lX\n",	'a');
+	printf("%%llX: %llX\n",	'a');
+
+	printf("\n\033[34;33m%%p:\n");
+	printf("%%p:   %p\n",	str);
 }
