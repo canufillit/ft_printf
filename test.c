@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/27 17:07:32 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/28 15:30:41 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ int	main(void)
 	printf("%%0d:  %0d\n",	nb);
 	printf("%%.5d: %.5d\n", nb);
 	printf("%%.2d: %.2d\n", nb);
+	printf("%%5d: %5d\n", nb);
+	printf("%%2d: %2d\n", nb);
 
 	printf("\n\033[34;32m%%s:\n");
 	printf("%%s:   %s\n",	str);
 	printf("%%.2s: %.2s\n",	str);
 	printf("%%.5s: %.5s\n",	str);
 
-	printf("\n\033[34;33m%%hh:\n");
+/*	printf("\n\033[34;33m%%hh:\n");
 	printf("%%hd:  %hd\n",	'a');
 	printf("%%hhd: %hhd\n",	'a');
 	printf("%%hi:  %hi\n",	'a');
@@ -42,9 +44,9 @@ int	main(void)
 	printf("%%hx:  %hx\n",	'a');
 	printf("%%hhx: %hhx\n",	'a');
 	printf("%%hX:  %hX\n",	'a');
-	printf("%%hhX: %hhX\n",	'a');
+	printf("%%hhX: %hhX\n",	'a');*/
 
-	printf("\n\033[34;33m%%hh:\n");
+/*	printf("\n\033[34;33m%%hh:\n");
 	printf("%%ld:  %ld\n",	'a');
 	printf("%%lld: %lld\n",	'a');
 	printf("%%li:  %li\n",	'a');
@@ -56,7 +58,7 @@ int	main(void)
 	printf("%%lx:  %lx\n",	'a');
 	printf("%%llx: %llx\n",	'a');
 	printf("%%lX:  %lX\n",	'a');
-	printf("%%llX: %llX\n",	'a');
+	printf("%%llX: %llX\n",	'a');*/
 
 	printf("\n\033[34;33m%%p:\n");
 	printf("%%p:   %p\n",	str);
