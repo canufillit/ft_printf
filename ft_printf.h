@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/28 15:54:58 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/28 19:20:20 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 # define FT_PRINTF
 
 # include <unistd.h>
+# include <stdlib.h>
 # include "libft.h"
 
 typedef struct	s_printf
 {
 	int			needconv;	//si ya besoin d'appeler une fonction avant de l'add au str final
-	char		setting[5];	// -+#0<space>
+	char		*var;
+	char		settings[5];	// -+#0<space>
 	char		type;		// cspdiouxX
 	int			pre[2];		// 5.6 
 	char		size[2];	// h, hh, l, ll
@@ -32,7 +34,7 @@ typedef struct	s_fval
 	char	*(*f)(t_printf);
 }				t_fval;
 
-t_fval tab[] = {{'c', pf_ctos},
+/*t_fval tab[] = {{'c', pf_ctos},
 				{'s', NULL},
 				{'p', JSP},
 				{'d', pf_itoa},
@@ -40,5 +42,7 @@ t_fval tab[] = {{'c', pf_ctos},
 				{'o', JSP},
 				{'u', JSP},
 				{'x', JSP},
-				{'X', JSP}}
+				{'X', JSP}}*/
+
+t_printf	parsing(const char *str, ...);
 #endif

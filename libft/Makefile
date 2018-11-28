@@ -6,7 +6,7 @@
 #    By: apeyret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:35:55 by apeyret           #+#    #+#              #
-#    Updated: 2018/11/27 17:19:45 by apeyret          ###   ########.fr        #
+#    Updated: 2018/11/28 20:04:04 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,13 +81,26 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "█"
+
+$(NAME): prcompil $(OBJ)
+	@printf "\n"
+	@ar rc $(NAME) $(OBJ)
+	@printf "[Libft] Libft.a has been created\n"
+
+prcompil:
+	@printf "\x1B[0;32m[Libft] Compilation:\n[Libft] "
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
+	@printf "\033[0;31m[Libft] Deleted *.o\n"
 
-fclean: clean
-	/bin/rm -f $(NAME)
+nofclean:
+	@/bin/rm -f $(NAME)
+	@printf "\033[0;31m[Libft] Deleted libft.a\n"
+
+fclean: nofclean clean
 
 re: fclean all

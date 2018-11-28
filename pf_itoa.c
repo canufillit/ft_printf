@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   pf_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 13:27:39 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/28 19:29:39 by apeyret          ###   ########.fr       */
+/*   Created: 2018/11/27 16:57:08 by apeyret           #+#    #+#             */
+/*   Updated: 2018/11/28 14:54:56 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr(char const *s)
+static int		pf_intlen(t_printf *lst)
 {
-	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
+	int len;
+	
+	len = ft_intlen(lst->var);
+	if (lst->pre > len)
+		return (pre);
+	return (len);
+}
+
+static char		*pf_itoa(t_printf *lst)
+{
+	char *str;
+	
+		
 }
