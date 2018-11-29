@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/28 18:31:09 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/29 12:16:56 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_printf	analyze(const char *str)
 			break;
 	}
 	lst->type = str[count];
+	return (lst);
 }
 
 t_printf	parsing(const char *str, ...)
@@ -75,7 +76,11 @@ t_printf	parsing(const char *str, ...)
 		{
 			if (!(tmp = malloc(sizeof(t_printf))))
 				return (NULL);
-			lst = pushback(analyze(str + count));
+			tmp->needconv = 0
+			tmp->var = ft_strndup(str, count);
+			str += count;
+			count = 0;
+			lst = pushback(analyze(str));
 		}
 		count++;
 	}
