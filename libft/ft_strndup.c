@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 15:22:48 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/29 15:17:26 by apeyret          ###   ########.fr       */
+/*   Created: 2018/11/29 14:18:09 by apeyret           #+#    #+#             */
+/*   Updated: 2018/11/29 14:25:46 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *format, ...)
+char	*ft_strndup(const char *s, size_t size)
 {
-	t_printf	*lst;
-	va_list		ap;
+	size_t	count;
+	size_t	len;
+	char	*str;
 
-	lst = parser(format);
-	va_start(ap, format);
-	lst = pf_router(lst, ap);
-	/*while (lst)
+	len = 0;
+	count = 0;
+	if (size < (len = ft_strlen(s)))
+		str = ft_strnew(size);
+	else
+		str = ft_strnew(len);
+	while (str[count] && count < size)
 	{
-		ft_putstr(lst->var);
-		lst = lst->next;
-	}*/
-	return (1);
+		str[count] = s[count];
+		count++;
+	}
+	str[count] = '\0';
+	return (str);
 }

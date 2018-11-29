@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/29 12:16:56 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/29 14:26:59 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ft_cisin(char *s, char c)
 	return (0);
 }
 
-t_printf	analyze(const char *str)
+t_printf	*analyze(const char *str)
 {
 	int			count;
 	t_printf	*lst;
@@ -64,19 +64,20 @@ t_printf	analyze(const char *str)
 	return (lst);
 }
 
-t_printf	parsing(const char *str, ...)
+t_printf	*parser(const char *str, ...)
 {
 	int			count;
 	t_printf	*lst;
 	t_printf	*tmp;
 
+	count = 0;
 	while (str[count])
 	{
 		if (str[count] == '%' && str[count + 1] != '%')
 		{
 			if (!(tmp = malloc(sizeof(t_printf))))
 				return (NULL);
-			tmp->needconv = 0
+			tmp->needconv = 0;
 			tmp->var = ft_strndup(str, count);
 			str += count;
 			count = 0;
@@ -84,4 +85,5 @@ t_printf	parsing(const char *str, ...)
 		}
 		count++;
 	}
+	return (lst);
 }

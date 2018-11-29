@@ -6,15 +6,17 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/11/28 20:05:00 by apeyret          ###   ########.fr        #
+#    Updated: 2018/11/29 14:28:32 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf.a 
 
 SRC =	ft_printf.c \
+		pf_router.c \
+		pf_base_convertor.c \
 		parsing.c \
-		pf_itoa.c
+
 
 CC = gcc
 

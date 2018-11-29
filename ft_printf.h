@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/28 19:20:20 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/29 14:16:15 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft.h"
+# include <stdarg.h>
 
 typedef struct	s_printf
 {
@@ -44,5 +45,6 @@ typedef struct	s_fval
 				{'x', JSP},
 				{'X', JSP}}*/
 
-t_printf	parsing(const char *str, ...);
+t_printf	*parser(const char *str, ...);
+t_printf	*pf_router(t_printf *lst, va_list ap);
 #endif
