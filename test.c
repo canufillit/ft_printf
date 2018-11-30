@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 15:50:19 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/30 16:00:45 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(void)
 	printf("\n\033[34;32m%%s:\n");
 	printf("%%s:   %s\n",	str);
 	printf("%%.2s: %.2s\n",	str);
+	printf("%%5.2s: |%5.2s|\n",str);
+	printf("%%2.2s: |%2.2s|\n",str);
 	printf("%%.5s: %.5s\n",	str);
 	printf("%%2s:  %2s\n",	str);
 	printf("%%5s:  %5s\n",	str);

@@ -6,7 +6,7 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/11/30 15:46:07 by apeyret          ###   ########.fr        #
+#    Updated: 2018/11/30 16:24:45 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC =	ft_printf.c \
 		parsing.c \
 		pf_base_convertor.c \
 		pf_router.c \
-		pf_options.c
+		pf_options.c \
+		pf_putstr.c
 
 CC = gcc
 

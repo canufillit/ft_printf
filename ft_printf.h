@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 15:48:00 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/30 16:25:43 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ char				*utoa_base(t_printf *lst, unsigned long long n, int b);
 char				*stoa_base(t_printf *lst, long long n, int b);
 char		*pf_options(t_printf *lst);
 int			ft_cisin(char *s, char c);
+void	pf_putstr(t_printf *lst, const char *s);
 #endif

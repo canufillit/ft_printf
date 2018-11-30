@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:22:48 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 15:50:46 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/30 16:39:00 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ int		ft_printf(const char *format, ...)
 
 int		main()
 {
-	ft_printf("lolipop: %0+d", 1);
+	printf("\x1B[31m");
+	ft_printf("lolipop: %0+d %s\n", 1, "pour le bien\n");
+	ft_printf("lolipop: %0+d%20.2s\n", 1, "pour le bien\n");
+	printf("\x1B[32m");
+	printf("lolipop: %0+d%20.2s", 1, "pour le bien\n");
 /*	printf("\x1B[31m");
 	ft_printf("lolipop: %hhd", 1);
 	printf("\x1B[32m");
