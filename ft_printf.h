@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 16:25:43 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/30 17:24:39 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,20 @@ typedef struct	s_printf
 	struct s_printf	*next;
 }				t_printf;
 
-typedef struct	s_fval
+typedef struct	s_base
 {
 	char	c;
-	char	*(*f)(t_printf);
-}				t_fval;
-
-/*t_fval tab[] = {{'c', pf_ctos},
-				{'s', NULL},
-				{'p', JSP},
-				{'d', pf_itoa},
-				{'i', pf_itoa},
-				{'o', JSP},
-				{'u', JSP},
-				{'x', JSP},
-				{'X', JSP}}*/
+	int		base;
+}				t_base;
 
 t_printf	*parser(const char *str);
-void	pf_router(t_printf *lst, va_list ap);
-char				*utoa_base(t_printf *lst, unsigned long long n, int b);
-char				*stoa_base(t_printf *lst, long long n, int b);
+void		pf_router(t_printf *lst, va_list ap);
+char		*utoa_base(t_printf *lst, unsigned long long n, int b);
+char		*stoa_base(t_printf *lst, long long n, int b);
 char		*pf_options(t_printf *lst);
 int			ft_cisin(char *s, char c);
-void	pf_putstr(t_printf *lst, const char *s);
+void		pf_putstr(t_printf *lst, const char *s);
+int			ft_printf(const char *format, ...);
+t_printf	*ft_pushback(t_printf *lst, t_printf *add);
+t_printf	*pf_prnew(char *str, int needconv);
 #endif

@@ -6,36 +6,12 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 15:01:03 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/30 17:17:23 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_printf		*ft_pushback(t_printf *lst, t_printf *add)
-{
-	t_printf *tmp;
-	
-	tmp = lst;
-	if (!lst)
-		return(add);
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = add;
-	return (lst);
-}
-
-t_printf	*prnew(char *str)
-{
-	t_printf *lst;
-	
-	if (!(lst = malloc(sizeof(t_printf))))
-		return (NULL);
-	lst->next = NULL;
-	lst->var = str;
-	lst->needconv = 0;
-	return (lst);
-}
 
 int			ft_cisin(char *s, char c)
 {
@@ -54,11 +30,8 @@ int			ft_cisin(char *s, char c)
 t_printf	*analyze(const char *str, int *count)
 {
 	t_printf	*lst;
-	
-	if (!(lst = malloc(sizeof(t_printf))))
-		return (NULL);
-	lst->needconv = 1;
-	lst->settings[0] = '\0';
+
+	lst = pf_prnew(NULL, 1);
 	while (str[*count])
 	{
 		if (str[*count] >= '1' && str[*count] <= '9')
@@ -66,7 +39,6 @@ t_printf	*analyze(const char *str, int *count)
 			lst->pre[0] = ft_atoi(&str[*count]);
 			while (str[*count + 1] >= '0' && str[*count + 1] <= '9')
 				(*count)++;
-			//printf("[bite]%c\n", str[*count]);
 		}
 		else if (str[*count] == '.')
 		{
@@ -101,16 +73,22 @@ t_printf	*parser(const char *str)
 		if (str[count] == '%' && str[count + 1] != '%')
 		{
 			if (count)
-				lst = ft_pushback(lst, prnew(ft_strndup(str, count)));
+				lst = ft_pushback(lst, pf_prnew(ft_strndup(str, count), 0));
 			str += count + 1;
 			count = 0;
 			lst = ft_pushback(lst, analyze(str, &count));
 			str += count + 1;
 			count = -1;
 		}
+		else if (str[count] == '%' && str[count + 1]  == '%')
+		{
+			lst = ft_pushback(lst, pf_prnew(ft_strndup(str, count + 1), 0));
+			str += count + 2;
+			count = 0;
+		}
 		count++;
 	}
 	if (count != 0)
-		lst = ft_pushback(lst, prnew(ft_strndup(str, count)));
+		lst = ft_pushback(lst, pf_prnew(ft_strndup(str, count), 0));
 	return (lst);
 }
