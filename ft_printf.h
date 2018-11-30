@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 17:24:39 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/30 17:48:59 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@ typedef struct	s_printf
 
 typedef struct	s_base
 {
-	char	c;
-	int		base;
+	char		type;
+	int			base;
 }				t_base;
 
-t_printf	*parser(const char *str);
-void		pf_router(t_printf *lst, va_list ap);
-char		*utoa_base(t_printf *lst, unsigned long long n, int b);
-char		*stoa_base(t_printf *lst, long long n, int b);
-char		*pf_options(t_printf *lst);
-int			ft_cisin(char *s, char c);
-void		pf_putstr(t_printf *lst, const char *s);
-int			ft_printf(const char *format, ...);
-t_printf	*ft_pushback(t_printf *lst, t_printf *add);
-t_printf	*pf_prnew(char *str, int needconv);
+t_printf		*parser(const char *str);
+void			pf_router(t_printf *lst, va_list ap);
+char			*utoa_base(t_printf *lst, unsigned long long n, int b);
+char			*stoa_base(t_printf *lst, long long n, int b);
+char			*pf_options(t_printf *lst);
+int				ft_cisin(char *s, char c);
+void			pf_putstr(t_printf *lst, const char *s);
+int				ft_printf(const char *format, ...);
+t_printf		*ft_pushback(t_printf *lst, t_printf *add);
+t_printf		*pf_prnew(char *str, int needconv);
+int				pf_base(char c);
 #endif
