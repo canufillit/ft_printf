@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 14:19:19 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/11/30 15:50:19 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(void)
 	printf("\033[34;31m%%d:\n");
 	printf("%%d:   %d\n",	nb);
 	printf("%%+d:  %+d\n",	nb);
+	printf("%%0+d:  %0+d\n",	nb);
 	printf("%%-d:  %-d\n",	nb);
 	printf("%%0d:  %0d\n",	nb);
 	printf("%%.5d: %.5d\n", nb);

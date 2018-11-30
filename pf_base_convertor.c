@@ -6,13 +6,13 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 10:17:43 by glavigno          #+#    #+#             */
-/*   Updated: 2018/11/30 14:11:39 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/11/30 15:40:36 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char				*stoa_base(t_printf *lst, long long n, int b)
+char				*stoa_base(t_printf *lst, long long n, int b)
 {
 	unsigned long long	nb;
 	int					i;
@@ -32,10 +32,10 @@ static char				*stoa_base(t_printf *lst, long long n, int b)
 	}
 	if (i-- && n < 0 && b == 10)
 		lst->var[i] = '-';
-	return ((*lst)->var);
+	return (lst->var);
 }
 
-static char				*utoa_base(t_printf *lst, unsigned long long n, int b)
+char				*utoa_base(t_printf *lst, unsigned long long n, int b)
 {
 	unsigned long long	nb;
 	int					i;

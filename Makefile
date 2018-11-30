@@ -6,17 +6,17 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/11/30 14:07:43 by apeyret          ###   ########.fr        #
+#    Updated: 2018/11/30 15:46:07 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf.a 
 
 SRC =	ft_printf.c \
-		parsing.c 
-#		pf_base_convertor.c \
-#		pf_router.c \
-
+		parsing.c \
+		pf_base_convertor.c \
+		pf_router.c \
+		pf_options.c
 
 CC = gcc
 
@@ -27,7 +27,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "█"
 
 prcompil:

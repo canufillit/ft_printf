@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:22:48 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 14:59:05 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/30 15:50:46 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int		ft_printf(const char *format, ...)
 	va_list		ap;
 
 	lst = parser(format);
-	pr(lst);
+//	pr(lst);
 	va_start(ap, format);
-//	lst = pf_router(lst, ap);
+	pf_router(lst, ap);
 	/*while (lst)
 	{
 		ft_putstr(lst->var);
@@ -49,13 +49,13 @@ int		ft_printf(const char *format, ...)
 
 int		main()
 {
-	ft_printf("lolipop: %d", 1);
-	printf("\x1B[31m");
+	ft_printf("lolipop: %0+d", 1);
+/*	printf("\x1B[31m");
 	ft_printf("lolipop: %hhd", 1);
 	printf("\x1B[32m");
 	ft_printf("lolipop: %+05.6lld", 1);
 	printf("\x1B[33m");
 	ft_printf("lolipop: %+05.6lldprout", 1);
 	printf("\x1B[34m");
-	ft_printf("lolipop: %+05.6lld%d", 1, 1);
+	ft_printf("lolipop: %+05.6lld%d", 1, 1);*/
 }
