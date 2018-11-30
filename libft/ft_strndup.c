@@ -6,25 +6,26 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 14:18:09 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/29 14:25:46 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/30 14:30:48 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strndup(const char *s, size_t size)
+char	*ft_strndup(const char *s, int size)
 {
-	size_t	count;
-	size_t	len;
+	int		count;
+	int		len;
 	char	*str;
 
 	len = 0;
 	count = 0;
-	if (size < (len = ft_strlen(s)))
+	len = ft_strlen(s);
+	if (size < len)
 		str = ft_strnew(size);
 	else
 		str = ft_strnew(len);
-	while (str[count] && count < size)
+	while (s[count] && count < size)
 	{
 		str[count] = s[count];
 		count++;

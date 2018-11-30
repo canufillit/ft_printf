@@ -6,16 +6,16 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/11/29 14:28:32 by apeyret          ###   ########.fr        #
+#    Updated: 2018/11/30 14:07:43 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf.a 
 
 SRC =	ft_printf.c \
-		pf_router.c \
-		pf_base_convertor.c \
-		parsing.c \
+		parsing.c 
+#		pf_base_convertor.c \
+#		pf_router.c \
 
 
 CC = gcc
@@ -23,7 +23,6 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I libft/
 
 OBJ = $(SRC:.c=.o)
-
 
 all: $(NAME)
 
@@ -37,7 +36,8 @@ prcompil:
 $(NAME): prcompil $(OBJ)
 	@printf "\n"
 	@make -C libft/
-	@$(CC) $(CFLAGS) $(INC) -o $@ $^ 
+	gcc $(CFLAGS) $(OBJ) libft/libft.a
+#	ar rc $(NAME) $(SRC)
 
 clean:
 	@make clean -C libft/
