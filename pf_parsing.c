@@ -6,14 +6,13 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 17:17:23 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/11/30 18:13:30 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-int			ft_cisin(char *s, char c)
+int	ft_cisin(char *s, char c)
 {
 	int	count;
 
@@ -27,6 +26,16 @@ int			ft_cisin(char *s, char c)
 	return (0);
 }
 
+int		pf_passnb(const char *str, int *count)
+{
+	int tmp;
+
+	tmp = ft_atoi(&str[*count]);
+	while (str[*count + 1] >= '0' && str[*count + 1] <= '9')
+		(*count)++;
+	return (tmp);
+}
+
 t_printf	*analyze(const char *str, int *count)
 {
 	t_printf	*lst;
@@ -35,17 +44,11 @@ t_printf	*analyze(const char *str, int *count)
 	while (str[*count])
 	{
 		if (str[*count] >= '1' && str[*count] <= '9')
-		{
-			lst->pre[0] = ft_atoi(&str[*count]);
-			while (str[*count + 1] >= '0' && str[*count + 1] <= '9')
-				(*count)++;
-		}
+			lst->pre[0] = pf_passnb(str, count);
 		else if (str[*count] == '.')
 		{
 			(*count)++;
-			lst->pre[1] = ft_atoi(&str[*count]);
-			while (str[*count + 1] >= '0' && str[*count + 1] <= '9')
-				(*count)++;
+			lst->pre[1] = pf_passnb(str, count);
 		}
 		else if (ft_cisin("-+#0 ", str[*count]))
 			ft_strncat(lst->settings, &str[*count], 1);
