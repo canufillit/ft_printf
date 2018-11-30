@@ -6,7 +6,7 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/11/30 17:01:42 by apeyret          ###   ########.fr        #
+#    Updated: 2018/11/30 17:32:44 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,11 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "█"
 
 prcompil:
-	@printf "\x1B[32m[Printf] Compilation:\n"
+	@printf "\x1B[32m[Printf] Compilation:\n[Printf] "
 
 $(NAME): prcompil $(OBJ)
 	@printf "\n"
