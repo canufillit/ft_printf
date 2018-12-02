@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 17:17:33 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 17:22:52 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 int	main(void)
 {
-	int nb = 123;
-	char str[] = "123";
+//	int nb = -42;
+//	char str[] = "123";
 
-	ft_printf("\033[34;31m%%d:\n");
+	//printf("||%d||\n", printf("%s", "abc"));
+	//printf("//%d//\n", ft_printf("%s", "abc"));
+
+	ft_printf("%5%\n");
+/*	printf("\033[34;31m%%d:\n");
 	ft_printf("%%d:   %d\n",	nb);
+	printf("\033[34;33m%%d:\n");
 	ft_printf("%%+d:  %+d\n",	nb);
+	printf("\033[34;32m%%d:\n");
 	ft_printf("%%0+d:  %0+d\n",	nb);
 	ft_printf("%%-d:  %-d\n",	nb);
 	ft_printf("%%0d:  %0d\n",	nb);
@@ -29,7 +35,7 @@ int	main(void)
 	ft_printf("%%2d:  %2d\n", nb);
 
 	ft_printf("\n\033[34;32m%%s:\n");
-	ft_printf("%%s:   %s\n",	str);
+	ft_printf("%%s: %s\n",	"abc");
 	ft_printf("%%.2s: %.2s\n",	str);
 	ft_printf("%%5.2s: |%5.2s|\n",str);
 	ft_printf("%%2.2s: |%2.2s|\n",str);
@@ -42,7 +48,7 @@ int	main(void)
 
 	ft_printf("%%x:   %x\n",	nb);
 	ft_printf("%%x:   %x\n",	-nb);
-	ft_printf("%%x:   %x\n",	-nb - 8 );
+	ft_printf("%%x:   %x\n",	-nb - 8 );*/
 
 	//ft_printf("%%u:   %+u\n",	nb);
 /*	ft_printf("%%llu:   %llu\n",	nb);
