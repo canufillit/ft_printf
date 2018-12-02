@@ -6,13 +6,13 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 16:04:09 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 17:26:49 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	pf_putstr(t_printf *lst, const char *s)
+char	*pf_putstr(t_printf *lst, const char *s)
 {
 	char	*str;
 	int		size;
@@ -29,7 +29,7 @@ void	pf_putstr(t_printf *lst, const char *s)
 	else
 		size = len;
 	if (!(str = ft_strnew(size)))
-		return;
+		return NULL;
 	while (count < size - len)
 	{
 		str[count] = ' ';
@@ -37,6 +37,7 @@ void	pf_putstr(t_printf *lst, const char *s)
 	}
 	str[count] = '\0';
 	ft_putstr(ft_strncat(str, s, len));
+	return ((char*)s);
 }
 
 void	pf_putaddr(t_printf *lst, void *addr)

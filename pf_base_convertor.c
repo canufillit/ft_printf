@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 10:17:43 by glavigno          #+#    #+#             */
-/*   Updated: 2018/11/30 15:40:36 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 16:56:35 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ char				*stoa_base(t_printf *lst, long long n, int b)
 		lst->var[i] = (nb % b < 10) ? (nb % b + '0') : (nb % b + 'A' - 10);
 		nb /= b;
 	}
-	if (i-- && n < 0 && b == 10)
-		lst->var[i] = '-';
+	if (i && n < 0 && b == 10)
+		lst->var[0] = '-';
 	return (lst->var);
 }
 

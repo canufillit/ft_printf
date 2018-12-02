@@ -6,11 +6,11 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/11/30 17:32:44 by apeyret          ###   ########.fr        #
+#    Updated: 2018/12/02 16:31:54 by glavigno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf.a 
+NAME = libftprintf.a 
 
 SRC =	ft_printf.c \
 		pf_parsing.c \
@@ -40,7 +40,7 @@ $(NAME): prcompil $(OBJ)
 	@printf "\n"
 	@make -C libft/
 	gcc $(CFLAGS) $(OBJ) libft/libft.a
-#	ar rc $(NAME) $(SRC)
+	ar rc $(NAME) $(OBJ) libft/*.o
 
 clean:
 	@make clean -C libft/

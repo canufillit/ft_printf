@@ -6,12 +6,27 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 15:56:58 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 17:25:48 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int		lenall(t_printf *lst)
+{
+	int nb;
+
+	nb = 0;
+	while (lst)
+	{
+		if (lst->type == 'c')
+			nb++;
+		else
+			nb += ft_strlen(lst->var);
+		lst = lst->next;
+	}
+	return (nb);
+}
 
 void	pf_router_d(t_printf *lst, va_list ap)
 {
@@ -43,7 +58,7 @@ void	pf_router_u(t_printf *lst, va_list ap)
 	ft_putstr(pf_options(lst));
 }
 
-void	pf_router(t_printf *lst, va_list ap)
+int		pf_router(t_printf *lst, va_list ap)
 {
 	t_printf	*tmp;
 
@@ -53,7 +68,7 @@ void	pf_router(t_printf *lst, va_list ap)
 		if (!tmp->needconv)
 			ft_putstr(tmp->var);
 		else if (tmp->type == 's')
-			pf_putstr(tmp, va_arg(ap, char*));
+			lst->var = pf_putstr(tmp, va_arg(ap, char*));
 		else if (tmp->type == 'c')
 			ft_putchar(va_arg(ap, int));
 		else if (tmp->type == 'd' || tmp->type == 'i')
@@ -65,4 +80,5 @@ void	pf_router(t_printf *lst, va_list ap)
 			pf_putaddr(lst, va_arg(ap, void*));
 		tmp = tmp->next;
 	}
+	return (lenall(lst));
 }
