@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 17:31:37 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 17:41:24 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		lenall(t_printf *lst)
 	{
 		if (lst->type == 'c')
 			nb++;
+		else if (lst->type == 'p')
+			nb += 15;
 		else
 			nb += ft_strlen(lst->var);
 		lst = lst->next;

@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 17:26:49 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 17:39:43 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	pf_putaddr(t_printf *lst, void *addr)
 	if (!(lst->var = ft_strnew(2 + ft_strlen(str))))
 		return ;
 	ft_strcpy(lst->var, "0x");
-	ft_strcat(lst->var, str);
+	ft_strcat(lst->var, ft_strlower(str));
 	free(str);
 	ft_putstr(lst->var);
 }

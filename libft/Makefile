@@ -6,7 +6,7 @@
 #    By: apeyret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:35:55 by apeyret           #+#    #+#              #
-#    Updated: 2018/11/29 14:22:04 by apeyret          ###   ########.fr        #
+#    Updated: 2018/12/02 17:36:30 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,8 @@ SRC = ft_atoi.c \
 	ft_runtab.c \
 	ft_strccount.c \
 	ft_intlen.c \
-	ft_strndup.c
+	ft_strndup.c \
+	ft_strlower.c
 
 OBJ = $(SRC:.c=.o) 
 

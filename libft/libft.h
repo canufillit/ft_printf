@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:41:32 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 14:27:46 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 17:36:11 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ int					ft_runtab(char **tab, int *x, int *y);
 int					ft_strccount(char *str, char c);
 int					ft_intlen(int n);
 char				*ft_strndup(const char *s, int size);
+char				*ft_strlower(char *s);
 #endif
