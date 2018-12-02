@@ -6,17 +6,19 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 17:20:30 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/02 18:45:51 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <stdio.h>
 
 int	main(void)
 {
 //	int nb = 123;
 //	char str[] = "123";
-	ft_printf("%5%\n");
+//	ft_printf("%5%\n");
+	ft_printf("% d", -42);
 	/*printf("\n\n%d\n\n", printf("\033[34;31m%%d:\n"));
 	printf("\n\n%d\n\n", printf("%%d:   %d\n",	nb));
 	printf("\n\n%d\n\n", printf("%%+d:  %+d\n",	nb));

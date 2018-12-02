@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 17:41:24 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 19:03:58 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	pf_router_d(t_printf *lst, va_list ap)
 		lst->var = stoa_base(lst, va_arg(ap, int), pf_base(lst->type));
 	else if (lst->size[0] == 'h')
 		lst->var = stoa_base(lst, va_arg(ap, int), pf_base(lst->type));
-	ft_putstr(pf_options(lst));
+	lst->var = pf_options(lst);
+	ft_putstr(lst->var);
 }
 
 void	pf_router_u(t_printf *lst, va_list ap)
@@ -57,7 +58,8 @@ void	pf_router_u(t_printf *lst, va_list ap)
 		lst->var = utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
 	else if (lst->size[0] == 'h')
 		lst->var = utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
-	ft_putstr(pf_options(lst));
+	lst->var = pf_options(lst);
+	ft_putstr(lst->var);
 }
 
 int		pf_router(t_printf *lst, va_list ap)

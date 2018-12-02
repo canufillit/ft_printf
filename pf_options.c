@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:03:48 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/02 16:58:11 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/02 19:18:17 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,12 @@ char		*pf_options(t_printf *lst)
 {
 	if (ft_cisin(lst->settings, '0') && lst->pre[1])
 		lst->var = pf_prepend(lst, '0', lst->pre[1]);
-	if (ft_cisin(lst->settings, ' '))
+	if (ft_cisin(lst->settings, ' ') && *lst->var != '-')
 		lst->var = pf_prepend(lst, ' ', ft_strlen(lst->var) + 1);
 	if (ft_cisin(lst->settings, '+') && *lst->var != '-' && lst->type == 'd')
-		lst->var = pf_prepend(lst, '+', ft_strlen(lst->var) + 1);
+		return (lst->var = pf_prepend(lst, '+', ft_strlen(lst->var) + 1));
+	if (ft_cisin(lst->settings, '+') && ft_cisin(lst->settings, ' ') && *lst->var != '-')
+		return (lst->var = pf_prepend(lst, '+', ft_strlen(lst->var) + 1));
 	if (ft_cisin(lst->settings, '#') && (lst->type == 'X' || lst->type == 'x'))
 	{
 		lst->var[0] = '0';
