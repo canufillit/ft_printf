@@ -6,17 +6,20 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 17:17:33 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 15:35:52 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	main(void)
 {
 	int nb = 123;
 	char str[] = "123";
+	void *addr;
 
+	addr = malloc(12);
 	ft_printf("\033[34;31m%%d:\n");
 	ft_printf("%%d:   %d\n",	nb);
 	ft_printf("%%+d:  %+d\n",	nb);
@@ -43,6 +46,10 @@ int	main(void)
 	ft_printf("%%x:   %x\n",	nb);
 	ft_printf("%%x:   %x\n",	-nb);
 	ft_printf("%%x:   %x\n",	-nb - 8 );
+	ft_printf("%%x: %x\n", &str);
+	ft_printf("%%x: %x\n", addr);
+	printf("%%p:   %p\n", str);
+	printf("%%p:   %p\n", addr);
 
 	//ft_printf("%%u:   %+u\n",	nb);
 /*	ft_printf("%%llu:   %llu\n",	nb);

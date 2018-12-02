@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 16:37:52 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 16:04:09 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,17 @@ void	pf_putstr(t_printf *lst, const char *s)
 	}
 	str[count] = '\0';
 	ft_putstr(ft_strncat(str, s, len));
+}
+
+void	pf_putaddr(t_printf *lst, void *addr)
+{
+	char	*str;
+
+	str = utoa_base(lst, (unsigned long long)(&addr), 16);
+	if (!(lst->var = ft_strnew(2 + ft_strlen(str))))
+		return ;
+	ft_strcpy(lst->var, "0x");
+	ft_strcat(lst->var, str);
+	free(str);
+	ft_putstr(lst->var);
 }

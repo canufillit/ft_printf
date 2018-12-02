@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 17:46:13 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 15:56:58 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ void	pf_router(t_printf *lst, va_list ap)
 			pf_router_d(tmp, ap);
 		else if (tmp->type == 'u' || tmp->type == 'o' || tmp->type == 'x'
 			|| tmp->type == 'X')
-			pf_router_d(tmp, ap);
+			pf_router_u(tmp, ap);
+		else if (tmp->type == 'p')
+			pf_putaddr(lst, va_arg(ap, void*));
 		tmp = tmp->next;
 	}
 }
