@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 17:42:37 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 18:01:18 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(void)
 	ft_printf("\n\033[34;32m%%s:\n");
 	ft_printf("%%s: %s\n",	"abc");
 	ft_printf("%%.2s: %.2s\n",	str);
+	ft_printf("%%-15s: |%-15s|\n",	str);
 	ft_printf("%%5.2s: |%5.2s|\n",str);
 	ft_printf("%%2.2s: |%2.2s|\n",str);
 	ft_printf("%%.5s: %.5s\n",	str);
@@ -46,6 +47,8 @@ int	main(void)
 	ft_printf("\n\033[34;33m%%p:\n");
 	ft_printf("%%p:   %p\n",	str);
 	ft_printf("%%p:   %p\n", addr);
+	ft_printf("%%p:   %p\n", NULL);
+	printf("%%p:   %p\n", NULL);
 	printf("%%p:   %p\n", str);
 	printf("%%p:   %p\n", addr);
 
