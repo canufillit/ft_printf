@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 19:03:58 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/02 21:33:27 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ int		lenall(t_printf *lst)
 	nb = 0;
 	while (lst)
 	{
-		if (lst->type == 'c')
-			nb++;
-		else if (lst->type == 'p')
-			nb += 15;
-		else
+		if (lst->var)
 			nb += ft_strlen(lst->var);
 		lst = lst->next;
 	}
@@ -59,6 +55,8 @@ void	pf_router_u(t_printf *lst, va_list ap)
 	else if (lst->size[0] == 'h')
 		lst->var = utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
 	lst->var = pf_options(lst);
+	if (lst->type == 'x')
+		lst->var = ft_strlower(lst->var);
 	ft_putstr(lst->var);
 }
 
@@ -74,14 +72,16 @@ int		pf_router(t_printf *lst, va_list ap)
 		else if (tmp->type == 's')
 			tmp->var = pf_putstr(tmp, va_arg(ap, char*));
 		else if (tmp->type == 'c')
-			ft_putchar(va_arg(ap, int));
+			tmp->var = pf_putchar(tmp, va_arg(ap, int));
+		else if (tmp->type == '%')
+			tmp->var = pf_putchar(tmp, '%');
 		else if (tmp->type == 'd' || tmp->type == 'i')
 			pf_router_d(tmp, ap);
 		else if (tmp->type == 'u' || tmp->type == 'o' || tmp->type == 'x'
 			|| tmp->type == 'X')
 			pf_router_u(tmp, ap);
 		else if (tmp->type == 'p')
-			pf_putaddr(lst, va_arg(ap, void*));
+			tmp->var = pf_putaddr(tmp, va_arg(ap, void*));
 		tmp = tmp->next;
 	}
 	return (lenall(lst));

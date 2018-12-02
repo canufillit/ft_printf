@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:22:48 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 17:27:46 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 22:01:55 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,20 @@ void	pr(t_printf *lst)
 	while (lst)
 	{
 		if (!lst->needconv)
-			printf("var: %s\n",lst->var);
+		{
+			printf("\x1B[33m");
+			printf("var: |%s|\n",lst->var);
+		}
 		else
 		{
+			printf("\x1B[32m");
+			printf("var: |%s|\n",lst->var);
 			printf("set: |%s|\n", lst->settings);
 			printf("pre: %d.%d\n", lst->pre[0], lst->pre[1]);
 			printf("siz: |%s|\n", lst->size);
 			printf("typ: %c\n", lst->type);
 		}
-		printf("|||||||||||||||||\n");
+		printf("\x1B[31m|||||||||||||||||\x1B[0m\n");
 		lst = lst->next;
 	}
 }
@@ -36,6 +41,8 @@ int		ft_printf(const char *format, ...)
 	va_list		ap;
 
 	lst = parser(format);
+	if (!lst)
+		return (0);
 //	pr(lst);
 	va_start(ap, format);
 	return (pf_router(lst, ap));

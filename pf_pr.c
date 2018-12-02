@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:57:09 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 18:04:35 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 21:51:32 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_printf		*ft_pushback(t_printf *lst, t_printf *add)
 {
 	t_printf *tmp;
 	
+	if (!add)
+		return (lst);
 	tmp = lst;
 	if (!lst)
 		return(add);

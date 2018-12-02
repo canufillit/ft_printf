@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/11/30 18:13:30 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/02 22:02:08 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ t_printf	*analyze(const char *str, int *count)
 			break;
 		(*count)++;
 	}
+	if (!ft_cisin("cspdiouxX%", str[*count]))
+		return (NULL);
 	lst->type = str[*count];
 	return (lst);
 }
@@ -68,26 +70,25 @@ t_printf	*parser(const char *str)
 {
 	int			count;
 	t_printf	*lst;
+	t_printf	*tmp;
 
 	lst = NULL;
 	count = 0;
 	while (str[count])
 	{
-		if (str[count] == '%' && str[count + 1] != '%')
+		if (str[count] == '%')
 		{
+			if (!str[count + 1])
+				return (NULL);
 			if (count)
 				lst = ft_pushback(lst, pf_prnew(ft_strndup(str, count), 0));
 			str += count + 1;
 			count = 0;
-			lst = ft_pushback(lst, analyze(str, &count));
+			if (!(tmp = analyze(str, &count)))
+				return (NULL);
+			lst = ft_pushback(lst, tmp);
 			str += count + 1;
 			count = -1;
-		}
-		else if (str[count] == '%' && str[count + 1]  == '%')
-		{
-			lst = ft_pushback(lst, pf_prnew(ft_strndup(str, count + 1), 0));
-			str += count + 2;
-			count = 0;
 		}
 		count++;
 	}
