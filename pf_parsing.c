@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/03 15:04:59 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/03 21:43:40 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		pf_passnb(const char *str, int *count)
 	int tmp;
 
 	tmp = ft_atoi(&str[*count]);
-	if (str[*count] > '9' && str[*count] < '0')
+	if (!(str[*count] >= '0' && str[*count] <= '9'))
 	{
 		(*count)--;
 		return (tmp);
@@ -61,12 +61,14 @@ t_printf	*analyze(const char *str, int *count)
 			ft_strncat(lst->size, &str[*count], 1);
 		else if (str[*count] == 'h')
 			ft_strncat(lst->size, &str[*count], 1);
+		else if (str[*count] == 'z')
+			ft_strncat(lst->size, &str[*count], 1);
+		else if (str[*count] == 'j')
+			ft_strncat(lst->size, &str[*count], 1);
 		else
 			break;
 		(*count)++;
 	}
-	if (!ft_cisin("cspdiouxX%", str[*count]))
-		return (NULL);
 	lst->type = str[*count];
 	return (lst);
 }

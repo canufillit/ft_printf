@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/03 17:33:40 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/03 21:14:39 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct	s_printf
 {
 	int			needconv;	//si ya besoin d'appeler une fonction avant de l'add au str final
+	int			len;
 	char		*var;
 	char		settings[5];// -+#0<space>
 	char		type;		// cspdiouxX

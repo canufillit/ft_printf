@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/03 18:52:31 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/03 22:06:34 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int		lenall(t_printf *lst)
 	nb = 0;
 	while (lst)
 	{
-		if (lst->var)
-			nb += ft_strlen(lst->var);
+		nb += lst->len;
 		lst = lst->next;
 	}
 	return (nb);
@@ -38,7 +37,11 @@ void	pf_router_d(t_printf *lst, va_list ap)
 		lst->var = stoa_base(lst, (char)va_arg(ap, int), pf_base(lst->type));
 	else if (lst->size[0] == 'h')
 		lst->var = stoa_base(lst, (short)va_arg(ap, int), pf_base(lst->type));
-	lst->var = pf_options(lst);
+	else if (lst->size[0] == 'z')
+		lst->var = stoa_base(lst, va_arg(ap, size_t), pf_base(lst->type));
+	else if (lst->size[0] == 'j')
+		lst->var = stoa_base(lst, va_arg(ap, intmax_t), pf_base(lst->type));
+	pf_options(lst);
 	ft_putstr(lst->var);
 }
 
@@ -54,6 +57,8 @@ void	pf_router_u(t_printf *lst, va_list ap)
 		lst->var = utoa_base(lst, (unsigned char)va_arg(ap, unsigned int), pf_base(lst->type));
 	else if (lst->size[0] == 'h')
 		lst->var = utoa_base(lst, (unsigned short)va_arg(ap, unsigned int), pf_base(lst->type));
+	else if (lst->size[0] == 'j')
+		lst->var = stoa_base(lst, va_arg(ap, uintmax_t), pf_base(lst->type));
 	lst->var = pf_options(lst);
 	if (lst->type == 'x')
 		lst->var = ft_strlower(lst->var);
@@ -73,15 +78,16 @@ int		pf_router(t_printf *lst, va_list ap)
 			tmp->var = pf_putstr(tmp, va_arg(ap, char*));
 		else if (tmp->type == 'c')
 			tmp->var = pf_putchar(tmp, va_arg(ap, int));
-		else if (tmp->type == '%')
-			tmp->var = pf_putchar(tmp, '%');
 		else if (tmp->type == 'd' || tmp->type == 'i')
 			pf_router_d(tmp, ap);
 		else if (tmp->type == 'u' || tmp->type == 'o' || tmp->type == 'x'
-			|| tmp->type == 'X')
+			|| tmp->type == 'X' || tmp->type == 'b')
 			pf_router_u(tmp, ap);
 		else if (tmp->type == 'p')
 			tmp->var = pf_putaddr(tmp, va_arg(ap, void*));
+		else
+			tmp->var = pf_putchar(tmp, tmp->type);
+		tmp->len = ft_strlen(tmp->var);
 		tmp = tmp->next;
 	}
 	return (lenall(lst));

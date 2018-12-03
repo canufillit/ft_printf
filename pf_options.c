@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:03:48 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/03 18:38:44 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/03 21:58:48 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ t_opt	pf_len(t_printf *lst, t_opt opt, char c)
 		opt.nb_ext++;
 // '0'
 	if (opt.size < lst->pre[1])
-		opt.nb_0 += lst->pre[1] - opt.size;
+		opt.nb_0 = lst->pre[1] - opt.size;
 // ' '
 	if (opt.size + opt.nb_0 + opt.nb_ext < lst->pre[0] && (c == ' ' || ft_cisin(lst->settings, '-')))
-		opt.nb_sp += lst->pre[0] - opt.size - opt.nb_0 - opt.nb_ext;
+		opt.nb_sp = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_ext;
 	else if (opt.size + opt.nb_0 + opt.nb_ext < lst->pre[0] && c == '0')
-		opt.nb_0 += lst->pre[0] - opt.size - opt.nb_0 - opt.nb_ext;
-	else if (ft_cisin(lst->settings, ' ') && !opt.sign[0])
+		opt.nb_0 = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_ext;
+	else if (ft_cisin(lst->settings, ' ') && !opt.sign[0] && lst->type != 'u')
 		opt.nb_sp = 1;
 // strnew
 	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_0 + opt.nb_sp + opt.nb_ext)))

@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/03 18:36:56 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/03 22:08:17 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int	main(void)
 //	unsigned long ll;
 //
 //
-//int nb2 = ft_printf("% Zoooo");
-//printf("%d\n", nb2);
+//	int nb2 = ft_printf("% Zoooo");
+//	printf("%d\n", nb2);
+//
 //  %p
 //	ft_printf("%p\n", &i);
 //	ft_printf("%p\n", s);
@@ -42,6 +43,7 @@ int	main(void)
 //	printf("%%p:   %p\n", NULL);
 //	printf("%%p:   %p\n", str);
 //	printf("%%p:   %p\n", addr);
+//	ft_printf("{%%5p}: {%5p}", 0);
 //
 //	%d
 //	ft_printf("\033[34;31m%%d:\n");
@@ -65,8 +67,10 @@ int	main(void)
 //	ft_printf("%%-+10.5d: %-+10.5d\n", 4242);
 //	ft_printf("%% 5.5d: % 5.5d\n", 16);
 //	ft_printf("%% 5d: % 5d\n", 16);
-ft_printf("%%d: %d\n", -123);
-ft_printf("%%+d: %+d\n", 123);
+//	ft_printf("%%d: %d\n", -123);
+//	ft_printf("%%+d: %+d\n", 123);
+//	ft_printf("%%.d: %.d\n", nb);
+ft_printf("%d %d %d %d\n", 1, -2, 33, 42);
 //
 //	%s
 //	ft_printf("\n\033[34;32m%%s:\n");
@@ -103,5 +107,10 @@ ft_printf("%%+d: %+d\n", 123);
 //	ft_printf("%%x: %x\n", &str);
 //	ft_printf("%%x: %x\n", addr);
 //	ft_printf("%%x:   %x\n",	-nb - 8 );
-
+//
+//	%b
+//	ft_printf("%%b:\n");
+//	ft_printf("%%b: %b\n", 123);
+ft_printf("%jx", -4294967296);
+printf("%jx", -4294967296);
 }

@@ -21,12 +21,14 @@ int	main(void)
 //	printf("\n\n%d\n\n", printf("%%.2d: %.2d\n", nb));
 //	printf("\n\n%d\n\n", printf("%%5d:  %5d\n", nb));
 //	printf("\n\n%d\n\n", printf("%%+2d:  %+2d\n", nb));
-printf("%% 5.5d: % 5.5d\n", 16);
-printf("%% 5d: % 5d\n", 16);
-printf("%#-08x", 42);
-printf("%#0-8x", 42);
-printf("%+u", 4294967295);
-printf("% u", 4294967295);
+//	printf("%% 5.5d: % 5.5d\n", 16);
+//	printf("%% 5d: % 5d\n", 16);
+//	printf("%#-08x", 42);
+//	printf("%#0-8x", 42);
+//	printf("%+u", 4294967295);
+//	printf("% u", 4294967295);
+//	printf("%%03.2d: %03.2d\n", 0);
+//	printf("%%06.2d: %06.2d\n", 123);
 //
 //	printf("\n\033[34;32m%%s:\n");
 //	printf("%%s:   %s\n",	str);
@@ -39,7 +41,7 @@ printf("% u", 4294967295);
 //
 //	printf("\n\033[34;33m%%p:\n");
 //	printf("%%p:   %p\n",	str);
-//
+printf("{%%5p}: {%5p}", 0);
 //	printf("%%x:   %x\n",	nb);
 //	printf("%%x:   %x\n",	-nb);
 //	printf("%%x:   %x\n",	-nb - 8 );

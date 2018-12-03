@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:22:48 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/03 14:29:16 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/03 21:18:16 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ int		ft_printf(const char *format, ...)
 	lst = parser(format);
 	if (!lst)
 		return (0);
-//	pr(lst);
 	va_start(ap, format);
-	return (pf_router(lst, ap));
+	int nb = pf_router(lst, ap);
+//	pr(lst);
+//	printf("%d\n", nb);
+	return (nb);
 }
