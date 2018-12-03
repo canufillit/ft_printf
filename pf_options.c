@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:03:48 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/03 17:35:10 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/03 18:38:44 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,20 @@ char	*pf_addc(char *s, int n, char c)
 
 char	*add_base_prefix(t_printf *lst, char *s)
 {
-	int count;
-	
-	count = 0;
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'X' || lst->type == 'x') 
-			&& *lst->var != '0')
-	{
+	if (ft_cisin(lst->settings, '#') && (lst->type == 'X' || lst->type == 'x'))
 		ft_strcat(s, "0X");
-	}
 	else if (ft_cisin(lst->settings, '#') && lst->type == 'o')
-	{
 		ft_strcat(s, "0");
-	}
 	return (s);
 }
 
-t_opt	pf_len(t_printf *lst, t_opt opt)
+t_opt	pf_len(t_printf *lst, t_opt opt, char c)
 {
 	opt.size = ft_strlen(lst->var) - ((ft_cisin(lst->var, '-')) ? 1 : 0);
 //signe
 	if (ft_cisin(lst->var, '-') && (lst->type == 'd' || lst->type == 'i'))
 		ft_strcpy(opt.sign, "-");
-	else if (ft_cisin(lst->settings, '+'))
+	else if (ft_cisin(lst->settings, '+') && (lst->type == 'd' || lst->type == 'i'))
 		ft_strcpy(opt.sign, "+");
 // 0x/0
 	if (ft_cisin(lst->settings, '#') && (lst->type == 'x' || lst->type == 'X'))
@@ -61,11 +53,15 @@ t_opt	pf_len(t_printf *lst, t_opt opt)
 	if (ft_cisin(lst->var, '-') || ft_cisin(lst->settings, '+'))
 		opt.nb_ext++;
 // '0'
-	if (opt.size + opt.nb_ext < lst->pre[1])
-		opt.nb_0 = lst->pre[1] - opt.size - opt.nb_ext;
+	if (opt.size < lst->pre[1])
+		opt.nb_0 += lst->pre[1] - opt.size;
 // ' '
-	if (opt.size + opt.nb_0 + opt.nb_ext < lst->pre[0])
-		opt.nb_sp = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_ext;
+	if (opt.size + opt.nb_0 + opt.nb_ext < lst->pre[0] && (c == ' ' || ft_cisin(lst->settings, '-')))
+		opt.nb_sp += lst->pre[0] - opt.size - opt.nb_0 - opt.nb_ext;
+	else if (opt.size + opt.nb_0 + opt.nb_ext < lst->pre[0] && c == '0')
+		opt.nb_0 += lst->pre[0] - opt.size - opt.nb_0 - opt.nb_ext;
+	else if (ft_cisin(lst->settings, ' ') && !opt.sign[0])
+		opt.nb_sp = 1;
 // strnew
 	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_0 + opt.nb_sp + opt.nb_ext)))
 		return (opt);
@@ -88,14 +84,12 @@ char		*pf_options(t_printf *lst)
 
 	pf_optnew(&opt);
 	c = (ft_cisin(lst->settings, '0')) ? '0' : ' ';
-	opt = pf_len(lst, opt);
+	opt = pf_len(lst, opt, c);
 // ajouter espace ou zero
 	if (!ft_cisin(lst->settings, '-'))
 		pf_addc(opt.tmp, opt.nb_sp, c);
 // ajouter le signe
-	if ((ft_cisin(lst->settings, '+') && !ft_cisin(lst->var, '-')) || ft_cisin(lst->settings, '-'))
-		ft_strcat(opt.tmp, opt.sign);
-	else if ((ft_cisin(lst->settings, '+') && !ft_cisin(lst->var, '-')) || !ft_cisin(lst->settings, '-'))
+	if (opt.sign[0])
 		ft_strcat(opt.tmp, opt.sign);
 // ajouter 0x/0
 	add_base_prefix(lst, opt.tmp);

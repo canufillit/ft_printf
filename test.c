@@ -3,7 +3,7 @@
 
 int	main(void)
 {
-	int nb = 123;
+//	int nb = 123;
 //	char str[] = "123";
 //
 //	ft_printf("%5%\n");
@@ -14,13 +14,19 @@ int	main(void)
 //	printf("\n\n%d\n\n", printf("%%0+d:  %0+d\n",	nb));
 //	printf("\n\n%d\n\n", printf("%%-d:  %-d\n",	nb));
 //	printf("\n\n%d\n\n", printf("%%0d:  %0d\n",	nb));
-	printf("\n\n%d\n\n", printf("%%.5d: %.5d\n", nb));
+//	printf("\n\n%d\n\n", printf("%%.5d: %.5d\n", nb));
 //	printf("\n\n%d\n\n", printf("%%5.2d: %5.2d\n", nb));
 //	printf("\n\n%d\n\n", printf("%%05.2d: %05.2d\n", nb));
 //	printf("\n\n%d\n\n", printf("%%2.5d: %2.5d\n", nb));
 //	printf("\n\n%d\n\n", printf("%%.2d: %.2d\n", nb));
 //	printf("\n\n%d\n\n", printf("%%5d:  %5d\n", nb));
 //	printf("\n\n%d\n\n", printf("%%+2d:  %+2d\n", nb));
+printf("%% 5.5d: % 5.5d\n", 16);
+printf("%% 5d: % 5d\n", 16);
+printf("%#-08x", 42);
+printf("%#0-8x", 42);
+printf("%+u", 4294967295);
+printf("% u", 4294967295);
 //
 //	printf("\n\033[34;32m%%s:\n");
 //	printf("%%s:   %s\n",	str);

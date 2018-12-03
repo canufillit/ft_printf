@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 21:33:27 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/03 18:46:10 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	pf_router_d(t_printf *lst, va_list ap)
 	if (lst->size[0] == '\0')
 		lst->var = stoa_base(lst, va_arg(ap, int), pf_base(lst->type));
 	else if (lst->size[1] == 'l')
-		lst->var = stoa_base(lst, va_arg(ap, int), pf_base(lst->type));
+		lst->var = stoa_base(lst, va_arg(ap, long long), pf_base(lst->type));
 	else if (lst->size[0] == 'l')
-		lst->var = stoa_base(lst, va_arg(ap, int), pf_base(lst->type));
+		lst->var = stoa_base(lst, va_arg(ap, long), pf_base(lst->type));
 	else if (lst->size[1] == 'h')
 		lst->var = stoa_base(lst, va_arg(ap, int), pf_base(lst->type));
 	else if (lst->size[0] == 'h')
@@ -47,9 +47,9 @@ void	pf_router_u(t_printf *lst, va_list ap)
 	if (lst->size[0] == '\0')
 		lst->var = utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
 	else if (lst->size[1] == 'l')
-		lst->var = utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
+		lst->var = utoa_base(lst, va_arg(ap, unsigned long long), pf_base(lst->type));
 	else if (lst->size[0] == 'l')
-		lst->var = utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
+		lst->var = utoa_base(lst, va_arg(ap, unsigned long), pf_base(lst->type));
 	else if (lst->size[1] == 'h')
 		lst->var = utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
 	else if (lst->size[0] == 'h')
