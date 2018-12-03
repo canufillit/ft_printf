@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 10:17:43 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/02 16:56:35 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/03 14:59:40 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char				*stoa_base(t_printf *lst, long long n, int b)
 
 	i = 0;
 	nb = (n < 0) ? (-n) : n; 
-	i = (n < 0 && b == 10) ? 2 : 1;
+	i = ((b == 10) && ((n < 0)|| (n >= 0 && ft_cisin(lst->settings, '+')))) ? 2 : 1;
 	while (nb /= b)
 		++i;
 	nb = (n < 0) ? (-n) : n; 
@@ -32,6 +32,8 @@ char				*stoa_base(t_printf *lst, long long n, int b)
 	}
 	if (i && n < 0 && b == 10)
 		lst->var[0] = '-';
+	if (i && n >= 0 && ft_cisin(lst->settings, '+'))
+		lst->var[0] = '+';
 	return (lst->var);
 }
 
@@ -41,6 +43,7 @@ char				*utoa_base(t_printf *lst, unsigned long long n, int b)
 	int					i;
 
 	i = 1;
+	i = (ft_cisin(lst->settings, '+')) ? 2 : 1;
 	nb = n;
 	while (nb /= b)
 		++i;
@@ -51,5 +54,7 @@ char				*utoa_base(t_printf *lst, unsigned long long n, int b)
 		lst->var[i] = (n % b < 10) ? (n % b + '0') : (n % b + 'A' - 10);
 		n /= b;
 	}
+	if (i && ft_cisin(lst->settings, '+'))
+		lst->var[0] = '+';
 	return (lst->var);
 }

@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 21:14:06 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/03 13:56:31 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ t_printf		*pf_prnew(char *str, int needconv);
 int				pf_base(char c);
 char			*pf_putaddr(t_printf *lst, void *addr);
 char			*pf_putchar(t_printf *lst, char c);
+char			*pf_addsp(char *s, int n);
 #endif

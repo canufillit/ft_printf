@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/02 22:02:08 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/03 15:04:59 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int		pf_passnb(const char *str, int *count)
 	int tmp;
 
 	tmp = ft_atoi(&str[*count]);
+	if (str[*count] > '9' && str[*count] < '0')
+	{
+		(*count)--;
+		return (tmp);
+	}
 	while (str[*count + 1] >= '0' && str[*count + 1] <= '9')
 		(*count)++;
 	return (tmp);
