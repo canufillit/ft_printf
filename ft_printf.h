@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/03 13:56:31 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/03 17:33:40 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ typedef struct	s_base
 	char		type;
 	int			base;
 }				t_base;
+
+typedef struct	s_opt
+{
+	char		*tmp;
+	char		sign[2];
+	int			size;
+	int			nb_sp;
+	int			nb_0;
+	int			nb_ext;
+}				t_opt;
 
 t_printf		*parser(const char *str);
 int				pf_router(t_printf *lst, va_list ap);
