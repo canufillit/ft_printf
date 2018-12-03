@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/03 21:43:40 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/03 22:24:59 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,14 @@ t_printf	*analyze(const char *str, int *count)
 		}
 		else if (ft_cisin("-+#0 ", str[*count]))
 			ft_strncat(lst->settings, &str[*count], 1);
-		else if (str[*count] == 'l')
-			ft_strncat(lst->size, &str[*count], 1);
-		else if (str[*count] == 'h')
-			ft_strncat(lst->size, &str[*count], 1);
-		else if (str[*count] == 'z')
-			ft_strncat(lst->size, &str[*count], 1);
-		else if (str[*count] == 'j')
+		else if (ft_cisin("lhzj", str[*count]))
 			ft_strncat(lst->size, &str[*count], 1);
 		else
 			break;
 		(*count)++;
 	}
+	if (!str[*count])
+		return (NULL);
 	lst->type = str[*count];
 	return (lst);
 }
