@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/04 11:25:28 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/04 11:45:31 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	pf_router_d(t_printf *lst, va_list ap)
 	else if (lst->size[0] == 'h')
 		lst->var = stoa_base(lst, (short)va_arg(ap, int), pf_base(lst->type));
 	else if (lst->size[0] == 'z')
-		lst->var = stoa_base(lst, va_arg(ap, size_t), pf_base(lst->type));
+		lst->var = stoa_base(lst, va_arg(ap, ssize_t), pf_base(lst->type));
 	else if (lst->size[0] == 'j')
 		lst->var = stoa_base(lst, va_arg(ap, intmax_t), pf_base(lst->type));
 	pf_options(lst);
@@ -60,7 +60,7 @@ void	pf_router_u(t_printf *lst, va_list ap)
 	else if (lst->size[0] == 'h')
 		lst->var = utoa_base(lst, (unsigned short)va_arg(ap, unsigned int), pf_base(lst->type));
 	else if (lst->size[0] == 'z')
-		lst->var = utoa_base(lst, va_arg(ap, ssize_t), pf_base(lst->type));
+		lst->var = utoa_base(lst, va_arg(ap, size_t), pf_base(lst->type));
 	else if (lst->size[0] == 'j')
 		lst->var = utoa_base(lst, va_arg(ap, uintmax_t), pf_base(lst->type));
 	lst->var = pf_options(lst);
