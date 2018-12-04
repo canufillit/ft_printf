@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/03 22:24:59 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/04 16:34:52 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_printf	*analyze(const char *str, int *count)
 		else if (str[*count] == '.')
 		{
 			(*count)++;
+			lst->pre[2] = 1;
 			lst->pre[1] = pf_passnb(str, count);
 		}
 		else if (ft_cisin("-+#0 ", str[*count]))

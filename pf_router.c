@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/04 11:45:31 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/04 17:29:12 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	pf_router_u(t_printf *lst, va_list ap)
 {
 	if (lst->type == 'U')
 		lst->var = utoa_base(lst, va_arg(ap, unsigned long long), pf_base(lst->type));
+	else if (lst->type == 'O')
+		lst->var = utoa_base(lst, va_arg(ap, unsigned long), pf_base(lst->type));
 	else if (lst->size[0] == '\0')
 		lst->var = utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
 	else if (lst->size[1] == 'l')
@@ -82,10 +84,14 @@ int		pf_router(t_printf *lst, va_list ap)
 			tmp->var = pf_putstr(tmp, va_arg(ap, char*));
 		else if (tmp->type == 'c')
 			tmp->var = pf_putchar(tmp, va_arg(ap, int));
+		else if (tmp->type == 'S')
+			tmp->var = pf_putstr(tmp, va_arg(ap, char*));
+		else if (tmp->type == 'C')
+			tmp->var = pf_putchar(tmp, va_arg(ap, wchar_t));
 		else if (tmp->type == 'd' || tmp->type == 'i')
 			pf_router_d(tmp, ap);
 		else if (tmp->type == 'u' || tmp->type == 'o' || tmp->type == 'x'
-			|| tmp->type == 'X' || tmp->type == 'b' || tmp->type == 'U')
+			|| tmp->type == 'X' || tmp->type == 'b' || tmp->type == 'U' || tmp->type == 'O')
 			pf_router_u(tmp, ap);
 		else if (tmp->type == 'p')
 			tmp->var = pf_putaddr(tmp, va_arg(ap, void*));
