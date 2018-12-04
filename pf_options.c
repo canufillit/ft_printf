@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:03:48 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/03 21:58:48 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/04 11:21:03 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*pf_addc(char *s, int n, char c)
 
 char	*add_base_prefix(t_printf *lst, char *s)
 {
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'X' || lst->type == 'x'))
+	if (ft_cisin(lst->settings, '#') && (lst->type == 'X' || lst->type == 'x') && *lst->var != '0')
 		ft_strcat(s, "0X");
 	else if (ft_cisin(lst->settings, '#') && lst->type == 'o')
 		ft_strcat(s, "0");
@@ -45,7 +45,7 @@ t_opt	pf_len(t_printf *lst, t_opt opt, char c)
 	else if (ft_cisin(lst->settings, '+') && (lst->type == 'd' || lst->type == 'i'))
 		ft_strcpy(opt.sign, "+");
 // 0x/0
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'x' || lst->type == 'X'))
+	if (ft_cisin(lst->settings, '#') && (lst->type == 'x' || lst->type == 'X') && *lst->var != '0')
 		opt.nb_ext = 2;
 	if (ft_cisin(lst->settings, '#') && lst->type == 'o')
 		opt.nb_ext = 1;
