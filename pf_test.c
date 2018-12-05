@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/05 09:48:24 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/05 10:35:10 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int	main(void)
 {
+
 //	printf("pr{% 03d}\n", 0);
 //	ft_printf("pf{% 03d}\n", 0);
 //	printf("pr%%#.O: %#.O\n", 0);
@@ -54,10 +55,10 @@ int	main(void)
 //	printf("%%p:   %p\n", str);
 //	printf("%%p:   %p\n", addr);
 //	ft_printf("{%%5p}: {%5p}", 0);
-printf("pr|%#.o %#.0o|\n", 0, 0);
-ft_printf("pf|%#.o %#.0o|\n", 0, 0);
-printf("pr|%.o %.0o|\n", 0, 0);
-ft_printf("pf|%.o %.0o|\n", 0, 0);
+//	printf("pr|%#.o %#.0o|\n", 0, 0);
+//	ft_printf("pf|%#.o %#.0o|\n", 0, 0);
+//	printf("pr|%.o %.0o|\n", 0, 0);
+//	ft_printf("pf|%.o %.0o|\n", 0, 0);
 //
 //	%d
 //	ft_printf("\033[34;31m%%d:\n");
