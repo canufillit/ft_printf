@@ -6,7 +6,7 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/12/06 09:35:58 by glavigno         ###   ########.fr        #
+#    Updated: 2018/12/06 14:15:40 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC =	ft_printf.c \
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I libft/
+CFLAGS = -I libft/ #-Wall -Werror -Wextra 
 
 OBJ = $(SRC:.c=.o)
 
