@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 16:59:25 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 18:22:02 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,6 @@ char			*pf_putaddr(t_printf *lst, void *addr);
 char			*pf_putchar(t_printf *lst, char c);
 char			*pf_addsp(char *s, int n);
 char			*pf_ftoa(t_printf * lst, double n);
+char			*pf_ftoa_exep(t_printf * lst, double n);
+
 #endif
