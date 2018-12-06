@@ -6,40 +6,29 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 19:04:34 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/05 20:10:41 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/06 12:12:14 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "ft_printf.h"
 
-char	*ft_strnew(size_t size)
+unsigned long	ft_pow(unsigned long n, int pow)
 {
-	char	*ptr;
+	unsigned long	total;
 
-	if (!(ptr = (char*)malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	ptr[size] = '\0';
-	while (size--)
-		ptr[size] = '\0';
-	return (ptr);
-}
-
-int		ft_pow(int n, int pow)
-{
+	total = n;
 	if (!pow)
 		return (1);
 	if (pow == 1)
 		return (n);
 	while (--pow)
-		n *= 10;
-	return (n);
+		total *= n;
+	return (total);
 }
 
-void	icopy(char *ptr, int *i, int ipart, int n)
+void	copy(char *ptr, int *i, unsigned long ipart, unsigned long n)
 {
-	printf("%d   %d    %d\n", *i, ipart, n);
-	while (ipart && n)
+	while (n)
 	{
 		ptr[(*i)++] = (ipart / n) + '0';
 		ipart %= n;
@@ -47,36 +36,39 @@ void	icopy(char *ptr, int *i, int ipart, int n)
 	}
 }
 
-char	*pf_ftoa(float n, int p)
+int		len_cal(long nb, int base)
 {
-	char	*ptr;
-	int		ipart;
-	float	fpart;
-	int		nb;
-	int		len;
 	int		i;
 
-	ipart = (int)n;
-	fpart = n - (float)ipart;
-	len = 1;
-	nb = (n < 0) ? -ipart : ipart;
+	i = 1;
+	while (nb /= base)
+		++i;
+	return (i);
+}
+
+char	*pf_ftoa(t_printf *lst, double n)
+{
+	long	ipart;
+	double	dpart;
+	int		len;
+	int		i;
+	int 	pre;
+
+	pre = (lst->pre[1]) ? lst->pre[1] : FLT_DIG;
+	ipart = (long)n;
+	dpart = n - (long double)ipart;
 	ipart = (n < 0) ? -ipart : ipart;
-	fpart = (n < 0) ? -fpart : fpart;
-	while (nb /= 10)
-		++len;
-	if (!(ptr = (n < 0) ? ft_strnew(len + p + 1) : ft_strnew(len + p + 2)))
+	dpart = (n < 0) ? -dpart : dpart;
+	dpart *= ft_pow(10, pre);
+	len = len_cal(((n < 0) ? -ipart : ipart), 10);
+	if (!(lst->var = (n < 0) ? ft_strnew(len + pre + 1) : ft_strnew(len + pre + 2)))
 		return (NULL);
 	i = 0;
 	if (n < 0)
-		ptr[i++] = '-';
-	icopy(ptr, &i, ipart, ft_pow(10, len - 1));
-	ptr[i++] = '.';
-	icopy(ptr, &i, (int)(fpart * ft_pow(10, p)), ft_pow(10, p - 1));
-	return (ptr);
-}
-
-int		main(void)
-{
-	printf("%s\n", pf_ftoa(-123.5432, 3));
-	return (0);
+		lst->var[i++] = '-';
+	copy(lst->var, &i, ipart, ft_pow(10, len - 1));
+	lst->var[i++] = '.';
+	dpart = ((int)((dpart - (int)dpart) * 10) >= 5) ? dpart + 1 : dpart;
+	copy(lst->var, &i, dpart, ft_pow(10, pre - 1));
+	return (lst->var);
 }

@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/05 10:35:10 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/06 12:10:07 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 int	main(void)
 {
+//	ft_printf("%.2f\n", 1.422);
+//	printf("%.2f\n", 1.422);
 
+//	ft_printf("%f\n", -1444565444646.6465424242242);
+//	printf("%f\n", -1444565444646.6465424242242);
+//	printf("%f, %F\n", -1.42, -1.42);
 //	printf("pr{% 03d}\n", 0);
 //	ft_printf("pf{% 03d}\n", 0);
 //	printf("pr%%#.O: %#.O\n", 0);
@@ -24,8 +29,8 @@ int	main(void)
 //	ft_printf("ft{%%03c}: {%03c}\n", 0);
 // ft_printf("{%%03c}: {%03c}\n", 0);
 // printf("{%%03c}: {%03c}\n", 0);
-	ft_printf("ft%%#o: %#o\n", 0);
-	printf("pf%%#o: %#o\n", 0);
+//	ft_printf("ft%%#o: %#o\n", 0);
+//	printf("pf%%#o: %#o\n", 0);
 //	int nb = 123;
 //	char str[] = "123";
 //	int i;

@@ -6,7 +6,7 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/12/02 22:03:32 by apeyret          ###   ########.fr        #
+#    Updated: 2018/12/06 09:35:58 by glavigno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC =	ft_printf.c \
 		pf_options.c \
 		pf_putstr.c \
 		pf_pr.c \
+		pf_ftoa.c \
 		pf_test.c
 
 CC = gcc
