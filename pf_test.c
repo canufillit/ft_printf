@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 17:19:39 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 18:02:56 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	main(void)
 {
-	ft_printf("%#+015f\n", 1.422);
-	printf("%#+015f\n", 1.422);
-
+//	ft_printf("%#+015f\n", 1.422);
+//	printf("%#+015f\n", 1.422);
+//
 //	ft_printf("%f\n", -1444565444646.6465424242242);
 //	printf("%f\n", -1444565444646.6465424242242);
 //	printf("%f, %F\n", -1.42, -1.42);
@@ -128,6 +128,59 @@ int	main(void)
 //	ft_printf("%%x: %x\n", addr);
 //	ft_printf("%%x:   %x\n",	-nb - 8 );
 //
+//	%d
+float nb = 75.5;
+//	ft_printf("\033[34;31m%%d:\n");
+//	ft_printf("%5%\n");
+//	ft_printf("%%f:   %f\n",	nb);
+//	ft_printf("%%+f:  %+f\n",	nb);
+//	ft_printf("%%0+f:  %0+f\n",	nb);
+//	ft_printf("%%-f:  %-f\n",	nb);
+//	ft_printf("%%0f:  %0f\n",	nb);
+//	ft_printf("%%.5f: %.5f\n", nb);
+//	ft_printf("%%.2f: %.2f\n", nb);
+//	ft_printf("%%5f:  %5f\n", nb);
+//	ft_printf("%%2f:  %2f\n", nb);
+//	ft_printf("%%7.5#f:  %7.5#f\n", nb);
+//	ft_printf("%%#f:  %#f\n", nb);
+//	ft_printf("%%-10.5f: |%-10.5f|\n", 2500);
+//	ft_printf("%%-10.5f: |%-10.5f|\n", 2500);
+//	ft_printf("%%08f: %08f\n", 42);
+//	ft_printf("%%5.f: %0.5f\n", -1);
+//	ft_printf("%%2.f: %0.2f\n", -1);
+//	ft_printf("%%-+10.5f: %-+10.5f\n", 4242);
+//	ft_printf("%% 5.5f: % 5.5f\n", 16);
+//	ft_printf("%% 5f: % 5f\n", 16);
+//	ft_printf("%%f: %f\n", -123);
+//	ft_printf("%%+f: %+f\n", 123);
+ft_printf("%%.f: %.f\n", nb);
+ft_printf("%f %f %f %f\n", 1, -2, 33, 42);
+
+//	printf("\033[34;32m%%d:\n");
+//	printf("%5%\n");
+//	printf("%%f:   %f\n",	nb);
+//	printf("%%+f:  %+f\n",	nb);
+//	printf("%%0+f:  %0+f\n",	nb);
+//	printf("%%-f:  %-f\n",	nb);
+//	printf("%%0f:  %0f\n",	nb);
+//	printf("%%.5f: %.5f\n", nb);
+//	printf("%%.2f: %.2f\n", nb);
+//	printf("%%5f:  %5f\n", nb);
+//	printf("%%2f:  %2f\n", nb);
+//	printf("%%7.5#f:  %7.5#f\n", nb);
+//	printf("%%#f:  %#f\n", nb);
+//	printf("%%-10.5f: |%-10.5f|\n", 2500);
+//	printf("%%-10.5f: |%-10.5f|\n", 2500);
+//	printf("%%08f: %08f\n", 42);
+//	printf("%%5.f: %0.5f\n", -1);
+//	printf("%%2.f: %0.2f\n", -1);
+//	printf("%%-+10.5f: %-+10.5f\n", 4242);
+//	printf("%% 5.5f: % 5.5f\n", 16);
+//	printf("%% 5f: % 5f\n", 16);
+//	printf("%%f: %f\n", -123);
+//	printf("%%+f: %+f\n", 123);
+printf("%%.f: %.f\n", nb);
+printf("%f %f %f %f\n", 1, -2, 33, 42);
 //	%b
 //	ft_printf("%%b:\n");
 //	ft_printf("%%b: %b\n", 123);
@@ -146,7 +199,7 @@ int	main(void)
 //	printf("%%.p, %%.0p: %.p, %.0p\n", 0, 0);
 //	printf("% p|%+p", 42, 42);
 //	printf("% o|%+o", 42, 42);
-//void *addr = 42;
+//	void *addr = 42;
 //	ft_printf("%%.0p: %.0p\n", addr, addr);
 //	printf("%%.0p: %.0p\n", addr, addr);
 //	ft_printf("%%.p: %.p\n", addr, addr);
@@ -155,14 +208,15 @@ int	main(void)
 //	printf("%%p: %p\n", addr, addr);
 //	ft_printf("%%.5p: %.5p\n", addr, addr);
 //	printf("%%.5p: %.5p\n", addr, addr);
-//ft_printf("%%9.2p: %9.2p\n", 1234);
-//printf("%%9.2p: %9.2p\n", 1234);
-ft_printf("%%#.3o: %#.3o\n", 1);
-printf("%%#.3o: %#.3o\n", 1);
-ft_printf("%%#.3x: %#.3x\n", 1);
-printf("%%#.3x: %#.3x\n", 1);
-ft_printf("%%05o: %05o\n", 42);
-printf("%%05o: %05o\n", 42);
-ft_printf("%%015u: %015u\n", 4294967295);
-printf("%%015u: %015u\n", 4294967295);
+//	ft_printf("%%9.2p: %9.2p\n", 1234);
+//	printf("%%9.2p: %9.2p\n", 1234);
+//	ft_printf("%%#.3o: %#.3o\n", 1);
+//	printf("%%#.3o: %#.3o\n", 1);
+//	ft_printf("%%#.3x: %#.3x\n", 1);
+//	printf("%%#.3x: %#.3x\n", 1);
+//	ft_printf("%%05o: %05o\n", 42);
+//	printf("%%05o: %05o\n", 42);
+//	ft_printf("%%015u: %015u\n", 4294967295);
+//	printf("%%015u: %015u\n", 4294967295);
+//	ft_printf("%                        lllllllllllllllllllls\n", "abc");
 }
