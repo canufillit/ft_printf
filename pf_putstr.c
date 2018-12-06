@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 15:26:37 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 16:23:46 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,19 @@ char	*pf_putchar(t_printf *lst, const char c)
 	return (lst->var);
 }
 
+char 	*pf_retnull(t_printf *lst)
+{
+	lst->var = ft_strdup("(null)");
+	ft_putstr(lst->var);
+	return (lst->var);
+}
 char	*pf_putstr(t_printf *lst, const char *s)
 {
 	t_opt opt;
 
 	opt = pf_optnew();
 	if (!s)
-	{
-		lst->var = ft_strdup("(null)");
-		ft_putstr(lst->var);
-		return (lst->var);
-	}
+		return (pf_retnull(lst));
 	opt.size = ft_strlen(s);
 	if (lst->pre[1] < opt.size && lst->pre[2])
 		opt.size = lst->pre[1];
@@ -92,15 +94,26 @@ char	*pf_putstr(t_printf *lst, const char *s)
 
 char	*pf_putaddr(t_printf *lst, void *addr)
 {
-	char	*str;
+	t_opt	opt;
 
-	str = utoa_base(lst, (unsigned long long)(addr), 16);
-	if (!(lst->var = ft_strnew(2 + ft_strlen(str))))
+	opt = pf_optnew();
+	opt.nb_zero = 2;
+	lst->var = utoa_base(lst, (unsigned long long)(addr), 16);
+	opt.size = ft_strlen(lst->var);
+	if (!lst->pre[1] && lst->pre[2] && lst->var[0] == '0')
+		opt.size = 0;
+	else if (lst->pre[1] > opt.size)
+		opt.nb_0 = lst->pre[1] - opt.size;
+	if (lst->pre[0] > opt.size + 2 && ft_cisin(lst->settings, '-'))
+		opt.nb_spe = lst->pre[0] - opt.size - 2;
+	else if (lst->pre[0] > opt.size + 2&& ft_cisin(lst->settings, '0'))
+		opt.nb_0 = lst->pre[0] - opt.size - 2;
+	else if (lst->pre[0] > opt.size + 2)
+		opt.nb_sp = lst->pre[0] - opt.size - 2;
+	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_zero)))
 		return (NULL);
-	ft_strcpy(lst->var, "0x");
-	ft_strcat(lst->var, ft_strlower(str));
-	free(str);
-	pf_options(lst, pf_len(lst, pf_optnew()));
+	lst->var = pf_options(lst, opt);
+	ft_strlower(lst->var);
 	ft_putstr(lst->var);
 	return (lst->var);
 }

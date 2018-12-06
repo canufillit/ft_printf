@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 15:29:45 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 16:20:38 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,15 @@ int	main(void)
 //	printf("%%.p, %%.0p: %.p, %.0p\n", 0, 0);
 //	printf("% p|%+p", 42, 42);
 //	printf("% o|%+o", 42, 42);
-ft_printf("%%.0p, %%.p: %.0p, %.p\n", 0, 0);
-printf("%%.0p, %%.p: %.0p, %.p\n", 0, 0);
-ft_printf("%%.p, %%.0p: %.p, %.0p\n", 0, 0);
-printf("%%.p, %%.0p: %.p, %.0p\n", 0, 0);
+void *addr = 42;
+//	ft_printf("%%.0p: %.0p\n", addr, addr);
+//	printf("%%.0p: %.0p\n", addr, addr);
+//	ft_printf("%%.p: %.p\n", addr, addr);
+//	printf("%%.p: %.p\n", addr, addr);
+//	ft_printf("%%p: %p\n", addr, addr);
+//	printf("%%p: %p\n", addr, addr);
+//	ft_printf("%%.5p: %.5p\n", addr, addr);
+//	printf("%%.5p: %.5p\n", addr, addr);
+ft_printf("%%9.2p: %9.2p\n", 1234);
+printf("%%9.2p: %9.2p\n", 1234);
 }
