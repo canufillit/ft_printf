@@ -81,5 +81,9 @@ int	main(void)
 //	printf("%%llx: %llx\n",	'a');
 //	printf("%%lX:  %lX\n",	'a');
 //	printf("%%llX: %llX\n",	'a');
-
+printf("%%c, %c\n", 42);
+printf("%%5.2c, %5.2c\n", 42);
+printf("%%.2c, %.2c\n", 42);
+printf("%%05c, %c05\n", 42);
+printf("%%.c, %.c\n", 42);
 }

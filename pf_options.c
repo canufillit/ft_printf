@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:03:48 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/06 14:36:45 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 15:38:11 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ char	*pf_addc(char *s, int n, char c)
 	return (s);
 }
 
-char	*add_base_prefix(t_printf *lst, char *s)
+char	*add_base_prefix(t_printf *lst, t_opt opt, char *s)
 {
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'X' || lst->type == 'x') && *lst->var != '0')
+	if (opt.nb_zero == 2)
 		ft_strcat(s, "0X");
-	else if (ft_cisin(lst->settings, '#') && (lst->type == 'o' || lst->type == 'O') && (*lst->var != '0' || lst->pre[2]))
+	else if (opt.nb_zero == 1)
 		ft_strcat(s, "0");
 	return (s);
 }
@@ -50,9 +50,9 @@ t_opt	pf_len(t_printf *lst, t_opt opt)
 	else if (ft_cisin(lst->settings, '+') && (lst->type == 'd' || lst->type == 'i'))
 		ft_strcpy(opt.sign, "+");
 // 0x/0
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'x' || lst->type == 'X'))//&& *lst->var != '0')
+	if (ft_cisin(lst->settings, '#') && (lst->type == 'x' || lst->type == 'X') && *lst->var != '0')
 		opt.nb_zero = 2;
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'O' || lst->type == 'o'))// && *lst->var != '0')
+	if (ft_cisin(lst->settings, '#') && (lst->type == 'O' || lst->type == 'o') && (*lst->var != '0' || lst->pre[2]))
 		opt.nb_zero = 1;
 // extra
 	if (ft_cisin(lst->var, '-') || ft_cisin(lst->settings, '+'))
@@ -102,7 +102,7 @@ char		*pf_options(t_printf *lst, t_opt opt)
 // ajouter le signe
 	ft_strcat(opt.tmp, opt.sign);
 // ajouter 0x/0
-	add_base_prefix(lst, opt.tmp);
+	add_base_prefix(lst, opt, opt.tmp);
 // ajouter '0' (.nb)
 	pf_addc(opt.tmp + opt.nb_sp + opt.nb_zero + opt.nb_p + opt.nb_sig, opt.nb_0, '0');
 	if (lst->var[0] == '-')
