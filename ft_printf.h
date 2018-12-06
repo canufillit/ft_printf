@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 14:35:47 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 16:34:05 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_printf		*parser(const char *str);
 int				pf_router(t_printf *lst, va_list ap);
 t_opt			pf_optnew();
 t_opt			pf_len(t_printf *lst, t_opt opt);
+t_opt			pf_len_f(t_printf *lst, t_opt opt);
 char			*utoa_base(t_printf *lst, unsigned long long n, int b);
 char			*stoa_base(t_printf *lst, long long n, int b);
 char			*pf_options(t_printf *lst, t_opt opt);

@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 16:20:38 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 16:50:37 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main(void)
 {
-//	ft_printf("%.2f\n", 1.422);
-//	printf("%.2f\n", 1.422);
+	ft_printf("%#+015f\n", 1.422);
+	printf("%#+015f\n", 1.422);
 
 //	ft_printf("%f\n", -1444565444646.6465424242242);
 //	printf("%f\n", -1444565444646.6465424242242);
@@ -146,7 +146,7 @@ int	main(void)
 //	printf("%%.p, %%.0p: %.p, %.0p\n", 0, 0);
 //	printf("% p|%+p", 42, 42);
 //	printf("% o|%+o", 42, 42);
-void *addr = 42;
+//void *addr = 42;
 //	ft_printf("%%.0p: %.0p\n", addr, addr);
 //	printf("%%.0p: %.0p\n", addr, addr);
 //	ft_printf("%%.p: %.p\n", addr, addr);
@@ -155,6 +155,6 @@ void *addr = 42;
 //	printf("%%p: %p\n", addr, addr);
 //	ft_printf("%%.5p: %.5p\n", addr, addr);
 //	printf("%%.5p: %.5p\n", addr, addr);
-ft_printf("%%9.2p: %9.2p\n", 1234);
-printf("%%9.2p: %9.2p\n", 1234);
+//ft_printf("%%9.2p: %9.2p\n", 1234);
+//printf("%%9.2p: %9.2p\n", 1234);
 }

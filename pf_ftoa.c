@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 19:04:34 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/06 12:12:14 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/06 16:10:03 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*pf_ftoa(t_printf *lst, double n)
 		lst->var[i++] = '-';
 	copy(lst->var, &i, ipart, ft_pow(10, len - 1));
 	lst->var[i++] = '.';
-	dpart = ((int)((dpart - (int)dpart) * 10) >= 5) ? dpart + 1 : dpart;
+	dpart = ((long)((dpart - (long)dpart) * 10) >= 5) ? dpart + 1 : dpart;
 	copy(lst->var, &i, dpart, ft_pow(10, pre - 1));
 	return (lst->var);
 }
