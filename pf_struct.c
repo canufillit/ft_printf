@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:57:09 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/05 09:53:25 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:42:58 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@ t_base			g_base[] =	{
 				{'b', 2},
 				{'\0', 0}
 };
+
+t_opt	pf_optnew()
+{
+	t_opt opt;
+
+	opt.tmp = NULL;
+	opt.nb_sig = 0;
+	opt.nb_zero = 0;
+	opt.nb_p = 0;
+	opt.nb_sp = 0;
+	opt.nb_0 = 0;
+	opt.size = 0;
+	opt.nb_spe = 0;
+	opt.sign[0] = '\0';
+	return (opt);
+}
 
 t_printf		*ft_pushback(t_printf *lst, t_printf *add)
 {

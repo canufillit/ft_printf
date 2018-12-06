@@ -6,34 +6,26 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/12/06 18:18:44 by apeyret          ###   ########.fr        #
+#    Updated: 2018/12/06 18:55:55 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a 
 
 SRC =	ft_printf.c \
-		pf_parsing.c \
-		pf_base_convertor.c \
-		pf_router.c \
-		pf_options.c \
-		pf_putstr.c \
-		pf_pr.c \
+		pf_base.c \
 		pf_ftoa.c \
-		pf_test.c
-
-NORME = ft_printf.c \
-		pf_parsing.c \
-		pf_base_convertor.c \
-		pf_router.c \
+		pf_len.c \
 		pf_options.c \
-		pf_putstr.c \
-		pf_pr.c \
-		pf_ftoa.c
+		pf_parsing.c \
+		pf_put.c \
+		pf_router.c \
+		pf_struct.c \
+		pf_test.c
 
 CC = gcc
 
-CFLAGS = -I libft/ #-Wall -Werror -Wextra 
+CFLAGS = -I libft/ -Wall -Werror -Wextra 
 
 OBJ = $(SRC:.c=.o)
 
@@ -42,9 +34,6 @@ all: $(NAME)
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "█"
-
-norme:
-	norminette $(NORME)
 
 prcompil:
 	@printf "\x1B[32m[Printf] Compilation:\n[Printf] "

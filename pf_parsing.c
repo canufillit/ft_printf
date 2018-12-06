@@ -6,25 +6,11 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 18:26:05 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 18:46:18 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_cisin(char *s, char c)
-{
-	int	count;
-
-	count = 0;
-	while (s[count])
-	{
-		if (s[count] == c)
-			return (1);
-		count++;
-	}
-	return (0);
-}
 
 int		pf_passnb(const char *str, int *count)
 {

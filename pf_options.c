@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:03:48 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/06 17:20:11 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 18:43:04 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,134 +34,6 @@ char	*add_base_prefix(t_printf *lst, t_opt opt, char *s)
 	else if (opt.nb_zero == 1)
 		ft_strcat(s, "0");
 	return (s);
-}
-
-t_opt	pf_len_f(t_printf *lst, t_opt opt)
-{
-	char	c;
-
-	c = (ft_cisin(lst->settings, '0') && (!lst->pre[2] || lst->type == 'f')) ? '0' : ' ';
-	opt.size = ft_strlen(lst->var) - ((ft_cisin(lst->var, '-')) ? 1 : 0);
-	if (lst->pre[2] && lst->var[0] == '0')
-		opt.size = 0;
-//signe
-	if (ft_cisin(lst->var, '-'))
-		ft_strcpy(opt.sign, "-");
-	else if (ft_cisin(lst->settings, '+'))
-		ft_strcpy(opt.sign, "+");
-// extra
-	if (ft_cisin(lst->var, '-') || ft_cisin(lst->settings, '+'))
-		opt.nb_sig = 1;
-// '0'
-	if (opt.size < lst->pre[1])
-		opt.nb_0 = lst->pre[1] - opt.size;
-// ' '
-	if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_zero + opt.nb_p < lst->pre[0] && ft_cisin(lst->settings, '-'))
-		opt.nb_spe = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_sig - opt.nb_zero;
-	else if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_zero + opt.nb_p < lst->pre[0] && c == ' ')
-		opt.nb_sp = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_sig - opt.nb_zero;
-	else if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_zero + opt.nb_p < lst->pre[0] && c == '0')
-		opt.nb_0 += lst->pre[0] - opt.size - opt.nb_sig + opt.nb_0 - opt.nb_p - opt.nb_zero;
-	if (ft_cisin(lst->settings, ' ') && !opt.sign[0] && lst->type != 'u' && !opt.nb_sp)
-	{
-		if (c == '0')
-			opt.nb_0--;
-		opt.nb_p = 1;
-	}
-// strnew
-	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_zero + opt.nb_sig)))
-		opt.tmp = NULL;
-	return (opt);
-}
-
-t_opt	pf_lenu(t_printf *lst, t_opt opt)
-{
-	char	c;
-
-	c = (ft_cisin(lst->settings, '0') && !lst->pre[2]) ? '0' : ' ';
-	opt.size = ft_strlen(lst->var) - ((ft_cisin(lst->var, '-')) ? 1 : 0);
-	if (lst->pre[2] && lst->var[0] == '0')
-		opt.size = 0;
-// 0x/0
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'x' || lst->type == 'X') && *lst->var != '0')
-		opt.nb_zero = 2;
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'O' || lst->type == 'o') && (*lst->var != '0' || lst->pre[2]))
-		opt.nb_zero = 1;
-// '0'
-	if (opt.size < lst->pre[1] && (lst->type == 'x' || lst->type == 'X'))
-		opt.nb_0 = lst->pre[1] - opt.size;
-	else if (opt.size + opt.nb_zero < lst->pre[1])
-		opt.nb_0 = lst->pre[1] - opt.size - opt.nb_zero;
-// ' '
-	if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_zero + opt.nb_p < lst->pre[0] && ft_cisin(lst->settings, '-'))
-		opt.nb_spe = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_sig - opt.nb_zero;
-	else if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_zero + opt.nb_p < lst->pre[0] && c == ' ')
-		opt.nb_sp = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_sig - opt.nb_zero;
-	else if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_p < lst->pre[0] && c == '0')
-		opt.nb_0 += lst->pre[0] - opt.size - opt.nb_sig + opt.nb_0 - opt.nb_p - opt.nb_zero;
-// strnew
-	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_zero + opt.nb_sig)))
-		opt.tmp = NULL;
-	return (opt);
-}
-
-t_opt	pf_len(t_printf *lst, t_opt opt)
-{
-	char	c;
-
-	c = (ft_cisin(lst->settings, '0') && !lst->pre[2]) ? '0' : ' ';
-	opt.size = ft_strlen(lst->var) - ((ft_cisin(lst->var, '-')) ? 1 : 0);
-	if (lst->pre[2] && lst->var[0] == '0')
-		opt.size = 0;
-//signe
-	if (ft_cisin(lst->var, '-') && (lst->type == 'd' || lst->type == 'i'))
-		ft_strcpy(opt.sign, "-");
-	else if (ft_cisin(lst->settings, '+') && (lst->type == 'd' || lst->type == 'i'))
-		ft_strcpy(opt.sign, "+");
-// 0x/0
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'x' || lst->type == 'X') && *lst->var != '0')
-		opt.nb_zero = 2;
-	if (ft_cisin(lst->settings, '#') && (lst->type == 'O' || lst->type == 'o') && (*lst->var != '0' || lst->pre[2]))
-		opt.nb_zero = 1;
-// extra
-	if (ft_cisin(lst->var, '-') || ft_cisin(lst->settings, '+'))
-		opt.nb_sig = 1;
-// '0'
-	if (opt.size < lst->pre[1])
-		opt.nb_0 = lst->pre[1] - opt.size;
-// ' '
-	if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_zero + opt.nb_p < lst->pre[0] && ft_cisin(lst->settings, '-'))
-		opt.nb_spe = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_sig - opt.nb_zero;
-	else if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_zero + opt.nb_p < lst->pre[0] && c == ' ')
-		opt.nb_sp = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_sig - opt.nb_zero;
-	else if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_zero + opt.nb_p < lst->pre[0] && c == '0')
-		opt.nb_0 += lst->pre[0] - opt.size - opt.nb_sig + opt.nb_0 - opt.nb_p - opt.nb_zero;
-	if (ft_cisin(lst->settings, ' ') && !opt.sign[0] && lst->type != 'u' && lst->type != 'o' && !opt.nb_sp)
-	{
-		if (c == '0')
-			opt.nb_0--;
-		opt.nb_p = 1;
-	}
-// strnew
-	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_zero + opt.nb_sig)))
-		opt.tmp = NULL;
-	return (opt);
-}
-
-t_opt	pf_optnew()
-{
-	t_opt opt;
-
-	opt.tmp = NULL;
-	opt.nb_sig = 0;
-	opt.nb_zero = 0;
-	opt.nb_p = 0;
-	opt.nb_sp = 0;
-	opt.nb_0 = 0;
-	opt.size = 0;
-	opt.nb_spe = 0;
-	opt.sign[0] = '\0';
-	return (opt);
 }
 
 char		*pf_options(t_printf *lst, t_opt opt)

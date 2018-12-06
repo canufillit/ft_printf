@@ -6,25 +6,11 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 16:42:04 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 18:45:49 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*pf_addsp(char *s, int n)
-{
-	int count;
-
-	count = 0;
-	while (n > count)
-	{
-		s[count] = ' ';
-		count++;
-	}
-	s[count] = '\0';
-	return (s);
-}
 
 void	pf_putstrr(char *str, char c)
 {
@@ -68,6 +54,7 @@ char 	*pf_retnull(t_printf *lst)
 	ft_putstr(lst->var);
 	return (lst->var);
 }
+
 char	*pf_putstr(t_printf *lst, const char *s)
 {
 	t_opt opt;
