@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 18:30:03 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 18:31:20 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ void	pf_router_u(t_printf *lst, va_list ap)
 
 void	pf_router_f(t_printf *lst, va_list ap)
 {
-	pf_ftoa(lst, va_arg(ap, double));
+	if (!lst->pre[1] && lst->pre[2])
+		pf_ftoa_exep(lst, va_arg(ap, double));
+	else
+		pf_ftoa(lst, va_arg(ap, double));
 	lst->var = pf_options(lst, pf_len_f(lst, pf_optnew()));
 	ft_putstr(lst->var);
 }
