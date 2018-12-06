@@ -6,7 +6,7 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/12/06 14:15:40 by apeyret          ###   ########.fr        #
+#    Updated: 2018/12/06 18:18:44 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,15 @@ SRC =	ft_printf.c \
 		pf_ftoa.c \
 		pf_test.c
 
+NORME = ft_printf.c \
+		pf_parsing.c \
+		pf_base_convertor.c \
+		pf_router.c \
+		pf_options.c \
+		pf_putstr.c \
+		pf_pr.c \
+		pf_ftoa.c
+
 CC = gcc
 
 CFLAGS = -I libft/ #-Wall -Werror -Wextra 
@@ -33,6 +42,9 @@ all: $(NAME)
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "█"
+
+norme:
+	norminette $(NORME)
 
 prcompil:
 	@printf "\x1B[32m[Printf] Compilation:\n[Printf] "

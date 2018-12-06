@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 16:59:36 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 18:30:03 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,6 @@ int		pf_router(t_printf *lst, va_list ap)
 			tmp->var = pf_putstr(tmp, va_arg(ap, char*));
 		else if (tmp->type == 'c')
 			tmp->var = pf_putchar(tmp, va_arg(ap, int));
-		else if (tmp->type == 'S')
-			tmp->var = pf_putstr(tmp, va_arg(ap, char*));
-		else if (tmp->type == 'C')
-			tmp->var = pf_putchar(tmp, va_arg(ap, wchar_t));
 		else if (tmp->type == 'd' || tmp->type == 'i' || tmp->type == 'D')
 			pf_router_d(tmp, ap);
 		else if (tmp->type == 'u' || tmp->type == 'o' || tmp->type == 'x'

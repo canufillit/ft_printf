@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 17:51:30 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 18:26:05 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_printf	*analyze(const char *str, int *count)
 				ft_strncat(lst->size, &str[*count], 1);
 		}
 		else
-			break;
+			break ;
 		(*count)++;
 	}
 	if (!str[*count])
