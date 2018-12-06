@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 16:23:46 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/06 16:42:04 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ char	*pf_putstr(t_printf *lst, const char *s)
 	t_opt opt;
 
 	opt = pf_optnew();
-	if (!s)
+	if (!s && !lst->pre[2])
 		return (pf_retnull(lst));
+	else if (!s && lst->pre[2])
+		s = ft_strdup("");
 	opt.size = ft_strlen(s);
 	if (lst->pre[1] < opt.size && lst->pre[2])
 		opt.size = lst->pre[1];
