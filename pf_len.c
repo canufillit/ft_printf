@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:35:47 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/07 15:07:43 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/07 15:52:12 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,12 @@ t_opt	pf_len(t_printf *lst, t_opt opt)
 		opt.nb_0 += lst->pre[0] - opt.size - opt.nb_sig + opt.nb_0 - opt.nb_p - opt.nb_zero;
 	if (ft_cisin(lst->settings, ' ') && !opt.sign[0] && lst->type != 'u' && lst->type != 'o' && !opt.nb_sp)
 	{
-		if (c == '0')
+		if (c == '0' && opt.nb_0)
 			opt.nb_0--;
 		opt.nb_p = 1;
 	}
 // strnew
-	if (!(opt.tmp = ft_strnew(opt.nb_sig + opt.nb_zero + opt.nb_p + opt.nb_p + opt.nb_0 + opt.size + opt.nb_spe)))
+	if (!(opt.tmp = ft_strnew(opt.nb_sig + opt.nb_zero + opt.nb_p + opt.nb_0 + opt.size + opt.nb_spe + opt.nb_sp)))
 		opt.tmp = NULL;
 	return (opt);
 }
