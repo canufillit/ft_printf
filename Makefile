@@ -6,7 +6,7 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/12/07 15:37:10 by apeyret          ###   ########.fr        #
+#    Updated: 2018/12/07 16:42:54 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,10 @@ all: $(NAME)
 
 
 $(NAME): $(OBJ)
+	@printf "[Printf] Compilation [OK]\n"
 	@make -C libft/
 	@gcc $(CFLAGS) $(DEBUG) $(OBJ) libft/libft.a
 	@ar rc $(NAME) $(OBJ) libft/*.o
-	@printf "[Printf] Compilation [OK]\n"
 
 clean:
 	@make clean -C libft/

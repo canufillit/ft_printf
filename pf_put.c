@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/07 13:05:09 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/07 16:50:10 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	*pf_putchar(t_printf *lst, const char c)
 		return (NULL);
 	lst->var = pf_options(lst, opt);
 	pf_putstrr(lst->var, c);
-	free(opt.tmp);
 	return (lst->var);
 }
 
@@ -79,7 +78,6 @@ char	*pf_putstr(t_printf *lst, const char *s)
 	lst->var = ft_strdup(s);
 	pf_options(lst, opt);
 	ft_putstr(lst->var);
-	free(opt.tmp);
 	return (lst->var);
 }
 
@@ -106,6 +104,5 @@ char	*pf_putaddr(t_printf *lst, void *addr)
 	lst->var = pf_options(lst, opt);
 	ft_strlower(lst->var);
 	ft_putstr(lst->var);
-	free(opt.tmp);
 	return (lst->var);
 }

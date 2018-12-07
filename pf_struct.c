@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:57:09 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/07 14:50:31 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/07 16:48:40 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_printf	*pf_prnew(char *str, int needconv)
 		return (NULL);
 	lst->next = NULL;
 	if (str)
-		lst->var = str;
+		lst->var = ft_strdup(str);
 	else
 		lst->var = NULL;
 	lst->needconv = needconv;
