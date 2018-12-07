@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:35:47 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 18:36:46 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/07 15:07:43 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ t_opt	pf_len(t_printf *lst, t_opt opt)
 		opt.nb_p = 1;
 	}
 // strnew
-	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_zero + opt.nb_sig)))
+	if (!(opt.tmp = ft_strnew(opt.nb_sig + opt.nb_zero + opt.nb_p + opt.nb_p + opt.nb_0 + opt.size + opt.nb_spe)))
 		opt.tmp = NULL;
 	return (opt);
 }

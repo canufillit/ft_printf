@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/07 12:52:19 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/07 15:15:59 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ int		lenall(t_printf *lst)
 void	pf_router_d(t_printf *lst, va_list ap)
 {
 	if (lst->size[1] == 'l')
-		lst->var = stoa_base(lst, va_arg(ap, long long), pf_base(lst->type));
+		stoa_base(lst, va_arg(ap, long long), pf_base(lst->type));
 	else if (lst->size[0] == 'l' || lst->type == 'D')
-		lst->var = stoa_base(lst, va_arg(ap, long), pf_base(lst->type));
+		stoa_base(lst, va_arg(ap, long), pf_base(lst->type));
 	else if (lst->size[1] == 'h')
-		lst->var = stoa_base(lst, (char)va_arg(ap, int), pf_base(lst->type));
+		stoa_base(lst, (char)va_arg(ap, int), pf_base(lst->type));
 	else if (lst->size[0] == 'h')
-		lst->var = stoa_base(lst, (short)va_arg(ap, int), pf_base(lst->type));
+		stoa_base(lst, (short)va_arg(ap, int), pf_base(lst->type));
 	else if (lst->size[0] == 'z')
-		lst->var = stoa_base(lst, va_arg(ap, ssize_t), pf_base(lst->type));
+		stoa_base(lst, va_arg(ap, ssize_t), pf_base(lst->type));
 	else if (lst->size[0] == 'j')
-		lst->var = stoa_base(lst, va_arg(ap, intmax_t), pf_base(lst->type));
+		stoa_base(lst, va_arg(ap, intmax_t), pf_base(lst->type));
 	else if (lst->size[0] == '\0')
 		stoa_base(lst, va_arg(ap, int), pf_base(lst->type));
 	pf_options(lst, pf_len(lst, pf_optnew()));

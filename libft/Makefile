@@ -6,7 +6,7 @@
 #    By: apeyret <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 14:35:55 by apeyret           #+#    #+#              #
-#    Updated: 2018/12/06 18:48:27 by apeyret          ###   ########.fr        #
+#    Updated: 2018/12/07 15:39:11 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,16 +85,13 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 %.o: %.c
+	@printf "\x1B[0;32m[Libft] Compilation [o.] \r"
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "█"
+	@printf "\x1B[0;32m[Libft] Compilation [.o] \r"
 
-$(NAME): prcompil $(OBJ)
-	@printf "\n"
+$(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@printf "[Libft] Libft.a has been created\n"
-
-prcompil:
-	@printf "\x1B[0;32m[Libft] Compilation:\n[Libft] "
+	@printf "\x1B[0;32m[Libft] Compilation [OK]\n"
 
 clean:
 	@/bin/rm -f $(OBJ)
