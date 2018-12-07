@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 18:11:07 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/07 13:02:18 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(void)
 //
 //	%s
 //	ft_printf("\n\033[34;32m%%s:\n");
-//	ft_printf("%%s: %s\n",	"abc");
+ft_printf("lol%s\n", "15");
 //	ft_printf("%%.2s: %.2s\n",	str);
 //	ft_printf("%%-15s: |%-15s|\n",	str);
 //	ft_printf("%%5.2s: |%5.2s|\n",str);
