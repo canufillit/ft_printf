@@ -65,12 +65,14 @@ t_printf	*pf_prnew(char *str, int needconv)
 		return (NULL);
 	lst->next = NULL;
 	if (str)
-		lst->var = ft_strdup(str);
+		lst->var = str;
 	else
 		lst->var = NULL;
 	lst->needconv = needconv;
 	lst->settings[0] = '\0';
 	lst->size[0] = '\0';
+	lst->type = '\0';
+	lst->len = 0;
 	lst->pre[0] = 0;
 	lst->pre[1] = 0;
 	lst->pre[2] = 0;

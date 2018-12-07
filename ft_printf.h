@@ -18,6 +18,9 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 
+# include <stddef.h>
+# include <inttypes.h>
+
 typedef struct		s_printf
 {
 	int				needconv;

@@ -45,6 +45,7 @@ char	*pf_putchar(t_printf *lst, const char c)
 		return (NULL);
 	lst->var = pf_options(lst, opt);
 	pf_putstrr(lst->var, c);
+	free(opt.tmp);
 	return (lst->var);
 }
 
@@ -78,6 +79,7 @@ char	*pf_putstr(t_printf *lst, const char *s)
 	lst->var = ft_strdup(s);
 	pf_options(lst, opt);
 	ft_putstr(lst->var);
+	free(opt.tmp);
 	return (lst->var);
 }
 
@@ -104,5 +106,6 @@ char	*pf_putaddr(t_printf *lst, void *addr)
 	lst->var = pf_options(lst, opt);
 	ft_strlower(lst->var);
 	ft_putstr(lst->var);
+	free(opt.tmp);
 	return (lst->var);
 }

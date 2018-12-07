@@ -18,11 +18,11 @@ char				*stoa_base(t_printf *lst, long long n, int b)
 	int					i;
 
 	i = 0;
-	nb = (n < 0) ? (-n) : n; 
+	nb = (n < 0) ? (-n) : n;
 	i = (b == 10 && n < 0) ? 2 : 1;
 	while (nb /= b)
 		++i;
-	nb = (n < 0) ? (-n) : n; 
+	nb = (n < 0) ? (-n) : n;
 	if (!(lst->var = ft_strnew(i)))
 		return (NULL);
 	while (i--)
