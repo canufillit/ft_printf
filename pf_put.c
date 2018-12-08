@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_putstr.c                                        :+:      :+:    :+:   */
+/*   pf_put.c                                                                 */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/07 16:50:10 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/08 17:04:40 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ char	*pf_putstr(t_printf *lst, const char *s)
 	opt = pf_optnew();
 	if (!s && !lst->pre[2])
 		return (pf_retnull(lst));
-	else if (!s && lst->pre[2])
-		s = ft_strdup("");
-	opt.size = ft_strlen(s);
+	if (!s)
+		lst->var = ft_strdup("");
+	else
+		lst->var = ft_strdup(s);
+	opt.size = ft_strlen(lst->var);
 	if (lst->pre[1] < opt.size && lst->pre[2])
 		opt.size = lst->pre[1];
 	if (lst->pre[0] > opt.size && ft_cisin(lst->settings, '-'))
@@ -75,7 +77,6 @@ char	*pf_putstr(t_printf *lst, const char *s)
 		opt.nb_sp = lst->pre[0] - opt.size;
 	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_spe + opt.nb_0 + opt.nb_sp)))
 		return (NULL);
-	lst->var = ft_strdup(s);
 	pf_options(lst, opt);
 	ft_putstr(lst->var);
 	return (lst->var);

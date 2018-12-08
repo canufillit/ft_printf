@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_pr.c                                            :+:      :+:    :+:   */
+/*   pf_struct.c                                                              */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:57:09 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/07 16:48:40 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/08 16:59:39 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ t_printf	*pf_prnew(char *str, int needconv)
 		return (NULL);
 	lst->next = NULL;
 	if (str)
+	{
 		lst->var = ft_strdup(str);
+		free(str);
+	}
 	else
 		lst->var = NULL;
 	lst->needconv = needconv;
