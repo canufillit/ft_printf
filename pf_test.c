@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/08 18:18:32 by Sawyerf                                  */
+/*   Updated: 2018/12/08 18:25:25 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 void	pf_print(char *s,void *var)
 {
-	printf("\x1b[30m\n");
+	printf("\x1b[0m");
 	int lol = ft_printf(s, var);
 	printf("\n");
 	int lol2 = printf(s, var);
 	if (lol != lol2)
-		printf("\n\x1b[31m ERROR %s, %d != %d\n", s, lol, lol2);
+		printf("\n\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
+	else
+		printf("\n\x1b[32m [GOOD]\x1b[0m\n");
 }
 
 int	main(void)
