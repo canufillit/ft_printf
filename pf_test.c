@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/08 20:18:09 by Sawyerf                                  */
+/*   Updated: 2018/12/08 20:30:33 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,82 @@
 #include <stdio.h>
 
 
-void	pf_print(char *s,void *var)
+void	pf_print_s(char *s, char *var)
+{
+	int lol;
+	int lol2;
+	
+	lol = 0;
+	ft_printf("\x1b[0mft_printf: |");
+	lol = ft_printf(s, var);
+	ft_printf("|\n");
+	printf("   printf: |");
+	lol2 = printf(s, var);
+	printf("|\n");
+	if (lol != lol2)
+		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
+	else
+		printf("\x1b[32m [GOOD] %s\x1b[0m\n", s);
+}
+
+void	pf_print_x(char *s, char *var)
+{
+	int lol;
+	int lol2;
+	
+	lol = 0;
+	ft_printf("\x1b[0mft_printf: |");
+	lol = ft_printf(s, var);
+	ft_printf("|\n");
+	printf("   printf: |");
+	lol2 = printf(s, var);
+	printf("|\n");
+	if (lol != lol2)
+		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
+	else
+		printf("\x1b[32m [GOOD] %s\x1b[0m\n", s);
+}
+
+void	pf_print_c(char *s, char var)
 {
 	int lol;
 	int lol2;
 
+	ft_printf("\x1b[0mft_printf: |");
+	lol = ft_printf(s, var);
+	ft_printf("|\n");
+	printf("   printf: |");
+	lol2 = printf(s, var);
+	printf("|\n");
+	if (lol != lol2)
+		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
+	else
+		printf("\x1b[32m [GOOD] %s\x1b[0m\n", s);
+}
+
+void	pf_print_d(char *s, int var)
+{
+	int lol;
+	int lol2;
+
+	ft_printf("\x1b[0mft_printf: |");
+	lol = ft_printf(s, var);
+	ft_printf("|\n");
+	printf("   printf: |");
+	lol2 = printf(s, var);
+	printf("|\n");
+	if (lol != lol2)
+		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
+	else
+		printf("\x1b[32m [GOOD] %s\x1b[0m\n", s);
+}
+
+void	pf_print_p(char *s,void *var)
+{
+	int lol;
+	int lol2;
+	
+	lol = 0;
 	ft_printf("\x1b[0mft_printf: |");
 	lol = ft_printf(s, var);
 	ft_printf("|\n");
@@ -50,40 +121,38 @@ void	pf_print_f(char *s, float var)
 
 void	test_d(int nb)
 {
-	pf_print("%d",			nb);
-	pf_print("%+d",			nb);
-	pf_print("%0+d",		nb);
-	pf_print("%-d",			nb);
-	pf_print("%0d",			nb);
-	pf_print("%- .5d",		nb);
-	pf_print("%- .5d",		nb);
-	pf_print("% .2d",		nb);
-	pf_print("%-5d", 		nb);
-	pf_print("%2d", 		nb);
-	pf_print("% 03d",		nb);
-	pf_print("%-0.5d",		nb);
-	pf_print("%0.5d",		nb);
-	pf_print("%0.2d",		nb);
-	pf_print("%-+10.5d",	nb);
-	pf_print("% 5.5d",		nb);
-	pf_print("% 5d",		nb);
-	pf_print("%.d",			nb);
-	pf_print("%0 +.d",		nb);
+	pf_print_d("%d",		nb);
+	pf_print_d("%+d",		nb);
+	pf_print_d("%0+d",		nb);
+	pf_print_d("%-d",		nb);
+	pf_print_d("%0d",		nb);
+	pf_print_d("%- .5d",	nb);
+	pf_print_d("%- .5d",	nb);
+	pf_print_d("% .2d",		nb);
+	pf_print_d("%-5d", 		nb);
+	pf_print_d("%2d", 		nb);
+	pf_print_d("% 03d",		nb);
+	pf_print_d("%-0.5d",	nb);
+	pf_print_d("%0.5d",		nb);
+	pf_print_d("%0.2d",		nb);
+	pf_print_d("%-+10.5d",	nb);
+	pf_print_d("% 5.5d",	nb);
+	pf_print_d("% 5d",		nb);
+	pf_print_d("%.d",		nb);
+	pf_print_d("%0 +.d",	nb);
 }
 
 void	test_p(void *addr)
 {
-	pf_print("%p",			addr);
-	pf_print("%30p",		addr);
-	pf_print("%30.30p",		addr);
-	pf_print("%0-50p",		ft_printf);
-	pf_print("%# 0-50p",	ft_printf);
-	pf_print("%p",			0);
-	pf_print("%p", 			NULL);
-	pf_print("%5.2p",		0);
-	pf_print("% -5p", 		NULL);
-	pf_print("%0 -5p", 		NULL);
-	pf_print("%0 -.5p",		NULL);
+	pf_print_p("%p",		addr);
+	pf_print_p("%30p",		addr);
+	pf_print_p("%30.30p",	addr);
+	pf_print_p("%0-50p",	addr);
+	pf_print_p("%# 0-50p",	addr);
+	pf_print_p("%5.2p",		addr);
+	pf_print_p("% -5p", 	addr);
+	pf_print_p("%0 -5p", 	addr);
+	pf_print_p("%0 -.5p",	addr);
 }
 
 void	test_f(float fl)
@@ -119,34 +188,34 @@ void	test_f(float fl)
 }
 
 void	test_s(char *str){
-	pf_print("%s",			str);
-	pf_print("%.2s",		str);
-	pf_print("%-15s",		str);
-	pf_print("%5.2s",		str);
-	pf_print("%2.2s",		str);
-	pf_print("%.5s",		str);
-	pf_print("%2s",			str);
-	pf_print("%5s.",		str);
+	pf_print_s("%s",		str);
+	pf_print_s("%.2s",		str);
+	pf_print_s("%-15s",		str);
+	pf_print_s("%5.2s",		str);
+	pf_print_s("%2.2s",		str);
+	pf_print_s("%.5s",		str);
+	pf_print_s("%2s",		str);
+	pf_print_s("%5s.",		str);
 }
 
 void	test_c(char c){
-	pf_print("%c",			c);
-	pf_print("%5c", 		c);
-	pf_print("%-5c", 		c);
-	pf_print("% 05c", 		c);
-	pf_print("% 5c", 		c);
-	pf_print("%.5c", 		c);
+	pf_print_c("%c",		c);
+	pf_print_c("%5c", 		c);
+	pf_print_c("%-5c", 		c);
+	pf_print_c("% 05c",		c);
+	pf_print_c("% 5c", 		c);
+	pf_print_c("%.5c", 		c);
 }
 
 void	test_x(unsigned int nb){
-	pf_print("%x",			nb);
-	pf_print("%5x",			nb);
-	pf_print("%5.5x",		nb);
-	pf_print("%-05.x",		nb);
-	pf_print("%- 5.x",		nb);
-	pf_print("%+ 5.x",		nb);
-	pf_print("%+ .x",		nb);
-	pf_print("%.x",			nb);
+	pf_print_x("%x",		nb);
+	pf_print_x("%5x",		nb);
+	pf_print_x("%5.5x",		nb);
+	pf_print_x("%-05.x",	nb);
+	pf_print_x("%- 5.x",	nb);
+	pf_print_x("%+ 5.x",	nb);
+	pf_print_x("%+ .x",		nb);
+	pf_print_x("%.x",		nb);
 }
 
 int	main(void)
@@ -161,7 +230,7 @@ int	main(void)
 	test_s(NULL);
 	//%p
 	test_p(ft_strdup("abc"));
-//	test_p(ft_printf);
+	test_p(ft_printf);
 	test_p(NULL);
 	//%f
 	test_f(12313);
