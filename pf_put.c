@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_put.c                                                                 */
+/*   pf_put.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 15:42:12 by glavigno         ###   ########.fr       */
+/*   Created: 2018/12/09 18:35:02 by glavigno          #+#    #+#             */
+/*   Updated: 2018/12/09 18:37:21 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,6 @@ char	*pf_putchar(t_printf *lst, const char c)
 	return (lst->var);
 }
 
-char 	*pf_retnull(t_printf *lst)
-{
-	if (!(lst->var = ft_strdup("(null)")))
-		return (NULL);
-	lst->opt = pf_optnew();
-	lst->opt.size = 6;
-	lst->len = 6;
-	return (lst->var);
-}
-
 char	*pf_putstr(t_printf *lst, const char *s)
 {
 	t_opt opt;
@@ -64,7 +54,7 @@ char	*pf_putstr(t_printf *lst, const char *s)
 	opt = pf_optnew();
 	if (!s)
 		if (!(lst->var = ft_strdup("(null)")))
-			return (NULL); 
+			return (NULL);
 	if (s)
 		if (!(lst->var = ft_strdup(s)))
 			return (NULL);
@@ -97,7 +87,7 @@ char	*pf_putaddr(t_printf *lst, void *addr)
 		opt.nb_0 = lst->pre[1] - opt.size;
 	if (lst->pre[0] > opt.size + 2 && ft_cisin(lst->settings, '-'))
 		opt.nb_spe = lst->pre[0] - opt.size - 2;
-	else if (lst->pre[0] > opt.size + 2&& ft_cisin(lst->settings, '0'))
+	else if (lst->pre[0] > opt.size + 2 && ft_cisin(lst->settings, '0'))
 		opt.nb_0 = lst->pre[0] - opt.size - 2;
 	else if (lst->pre[0] > opt.size + opt.nb_0 + 2)
 		opt.nb_sp = lst->pre[0] - opt.size - opt.nb_0 - 2;

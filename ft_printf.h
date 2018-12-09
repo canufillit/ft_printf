@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:31:37 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 16:59:17 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/09 18:32:03 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct		s_printf
 }					t_printf;
 
 t_printf		*parser(const char *str);
-int				pf_router(t_printf *lst, va_list ap);
+void			pf_router(t_printf *lst, va_list ap);
 t_opt			pf_optnew();
 t_opt			pf_len(t_printf *lst, t_opt opt);
 t_opt			pf_lenu(t_printf *lst, t_opt opt);
@@ -74,4 +74,6 @@ char			*pf_addsp(char *s, int n);
 char			*pf_ftoa(t_printf * lst, double n);
 char			*pf_ftoa_exep(t_printf * lst, double n);
 void			pf_prdel(t_printf *lst);
+void			ft_replace(char *s, char c1, char c2, int len);
+int				lenall(t_printf *lst);
 #endif
