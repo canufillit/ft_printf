@@ -6,12 +6,11 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:03:48 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/07 15:18:33 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/09 17:50:51 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 char	*pf_addc(char *s, int n, char c)
 {
@@ -36,22 +35,20 @@ char	*add_base_prefix(t_opt opt, char *s)
 	return (s);
 }
 
-char		*pf_options(char *s, t_opt opt)
+char	*pf_options(char *s, t_opt opt)
 {
 	char *tmp;
 
 	tmp = s;
-// ajouter espace
 	pf_addc(opt.tmp, opt.nb_sp + opt.nb_p, ' ');
-// ajouter le signe
 	ft_strcat(opt.tmp, opt.sign);
-// ajouter 0x/0
 	add_base_prefix(opt, opt.tmp);
-// ajouter '0' (.nb)
-	pf_addc(opt.tmp + opt.nb_sp + opt.nb_zero + opt.nb_p + opt.nb_sig, opt.nb_0, '0');
+	pf_addc(opt.tmp + opt.nb_sp + opt.nb_zero + opt.nb_p
+			+ opt.nb_sig, opt.nb_0, '0');
 	if (tmp[0] == '-' && opt.nb_sig)
 		tmp++;
 	ft_strncat(opt.tmp, tmp, opt.size);
-	pf_addc(opt.tmp + opt.size + opt.nb_0 + opt.nb_sp + opt.nb_zero + opt.nb_p + opt.nb_sig, opt.nb_spe, ' ');
+	pf_addc(opt.tmp + opt.size + opt.nb_0 + opt.nb_sp
+			+ opt.nb_zero + opt.nb_p + opt.nb_sig, opt.nb_spe, ' ');
 	return (opt.tmp);
 }
