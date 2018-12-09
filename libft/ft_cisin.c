@@ -6,13 +6,13 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:46:55 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 18:47:32 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/09 18:42:01 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int    ft_cisin(char *s, char c)
+int		ft_cisin(char *s, char c)
 {
-	int     count;
+	int		count;
 
 	count = 0;
 	while (s[count])
