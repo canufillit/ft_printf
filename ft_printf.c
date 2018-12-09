@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:22:48 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 03:59:42 by Sawyerf                                  */
+/*   Updated: 2018/12/09 15:09:39 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ char	*ret(t_printf *lst, int len)
 	while (lst)
 	{
 		if (!lst->var)
-		{
-			free(s);
-			return (NULL);
-		}
+			return (s);
 		if (!lst->needconv)
 			ft_strcpy(tmp, lst->var);
 		else

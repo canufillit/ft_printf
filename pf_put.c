@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 04:17:25 by Sawyerf                                  */
+/*   Updated: 2018/12/09 15:42:12 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,9 @@ char	*pf_putstr(t_printf *lst, const char *s)
 	t_opt opt;
 
 	opt = pf_optnew();
-	if (!s && !lst->pre[2])
-		return (pf_retnull(lst));
 	if (!s)
-		if (!(lst->var = ft_strdup("")))
-			return (NULL);
+		if (!(lst->var = ft_strdup("(null)")))
+			return (NULL); 
 	if (s)
 		if (!(lst->var = ft_strdup(s)))
 			return (NULL);
@@ -102,7 +100,7 @@ char	*pf_putaddr(t_printf *lst, void *addr)
 	else if (lst->pre[0] > opt.size + 2&& ft_cisin(lst->settings, '0'))
 		opt.nb_0 = lst->pre[0] - opt.size - 2;
 	else if (lst->pre[0] > opt.size + opt.nb_0 + 2)
-		opt.nb_sp = lst->pre[0] - opt.size - 2;
+		opt.nb_sp = lst->pre[0] - opt.size - opt.nb_0 - 2;
 	lst->len = opt.size + opt.nb_zero + opt.nb_sp + opt.nb_spe + opt.nb_0;
 	lst->opt = opt;
 	return (lst->var);

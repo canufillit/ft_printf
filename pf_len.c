@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:35:47 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/07 15:52:12 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/09 15:52:22 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ t_opt	pf_len_f(t_printf *lst, t_opt opt)
 {
 	char	c;
 
-	c = (ft_cisin(lst->settings, '0') && (!lst->pre[2] || lst->type == 'f')) ? '0' : ' ';
+	c = (ft_cisin(lst->settings, '0') && (!lst->pre[2])) ? '0' : ' ';
 	opt.size = ft_strlen(lst->var) - ((ft_cisin(lst->var, '-')) ? 1 : 0);
-	if (lst->pre[2] && lst->var[0] == '0')
-		opt.size = 0;
 //signe
 	if (ft_cisin(lst->var, '-'))
 		ft_strcpy(opt.sign, "-");
@@ -38,14 +36,14 @@ t_opt	pf_len_f(t_printf *lst, t_opt opt)
 		opt.nb_sp = lst->pre[0] - opt.size - opt.nb_0 - opt.nb_sig - opt.nb_zero;
 	else if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_zero + opt.nb_p < lst->pre[0] && c == '0')
 		opt.nb_0 += lst->pre[0] - opt.size - opt.nb_sig + opt.nb_0 - opt.nb_p - opt.nb_zero;
-	if (ft_cisin(lst->settings, ' ') && !opt.sign[0] && lst->type != 'u' && !opt.nb_sp)
+	if (ft_cisin(lst->settings, ' ') && !opt.sign[0] && !opt.nb_sp)
 	{
-		if (c == '0')
+		if (c == '0' && opt.nb_0)
 			opt.nb_0--;
 		opt.nb_p = 1;
 	}
 // strnew
-	lst->len = opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_zero + opt.nb_sig;
+	lst->len = opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_sig + opt.nb_spe;
 	return (opt);
 }
 
