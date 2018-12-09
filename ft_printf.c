@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                                              */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 15:22:48 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 16:58:06 by apeyret          ###   ########.fr       */
+/*   Created: 2018/12/09 18:28:55 by glavigno          #+#    #+#             */
+/*   Updated: 2018/12/09 18:33:35 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_replace(char *s, char c1, char c2, int len)
+void	pf_nike(t_printf *lst, char *tmp)
 {
-	int count;
-
-	count = 0;
-	while (count < len)
+	lst->opt.tmp = tmp;
+	if (lst->type == 'c')
 	{
-		if (s[count] == c1)
-		{
-			s[count] = c2;
-			return ;
-		}
-		count++;
+		pf_options("*", lst->opt);
+		ft_replace(tmp, '*', lst->var[0], lst->len);
 	}
+	else
+		pf_options(lst->var, lst->opt);
+	if (lst->type == 'x' || lst->type == 'p')
+		ft_strlower(lst->opt.tmp);
 }
 
 char	*ret(t_printf *lst, int len)
@@ -43,18 +41,7 @@ char	*ret(t_printf *lst, int len)
 		if (!lst->needconv)
 			ft_strcpy(tmp, lst->var);
 		else
-		{
-			lst->opt.tmp = tmp;
-			if (lst->type == 'c')
-			{
-				pf_options("*", lst->opt);
-				ft_replace(tmp, '*', lst->var[0], lst->len);
-			}
-			else
-				pf_options(lst->var, lst->opt);
-			if (lst->type == 'x' || lst->type == 'p')
-				ft_strlower(lst->opt.tmp);
-		}
+			pf_nike(lst, tmp);
 		tmp = tmp + lst->len;
 		lst = lst->next;
 	}
@@ -68,12 +55,12 @@ int		ft_printf(const char *format, ...)
 	int			len;
 	char		*s;
 
-
 	lst = parser(format);
 	if (!lst)
 		return (0);
 	va_start(ap, format);
-	len = pf_router(lst, ap);
+	pf_router(lst, ap);
+	len = lenall(lst);
 	s = ret(lst, len);
 	write(1, s, len);
 	free(s);
