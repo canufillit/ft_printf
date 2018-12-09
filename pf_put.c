@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 15:56:00 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/08 17:04:40 by Sawyerf                                  */
+/*   Updated: 2018/12/09 04:17:25 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ char	*pf_putchar(t_printf *lst, const char c)
 {
 	t_opt	opt;
 
-	lst->var = ft_strnew(1);
+	if (!(lst->var = ft_strnew(1)))
+		return (NULL);
 	lst->var[0] = c;
 	opt = pf_optnew();
 	opt.size = 1;
@@ -48,7 +49,8 @@ char	*pf_putchar(t_printf *lst, const char c)
 
 char 	*pf_retnull(t_printf *lst)
 {
-	lst->var = ft_strdup("(null)");
+	if (!(lst->var = ft_strdup("(null)")))
+		return (NULL);
 	lst->opt = pf_optnew();
 	lst->opt.size = 6;
 	lst->len = 6;
@@ -63,9 +65,11 @@ char	*pf_putstr(t_printf *lst, const char *s)
 	if (!s && !lst->pre[2])
 		return (pf_retnull(lst));
 	if (!s)
-		lst->var = ft_strdup("");
-	else
-		lst->var = ft_strdup(s);
+		if (!(lst->var = ft_strdup("")))
+			return (NULL);
+	if (s)
+		if (!(lst->var = ft_strdup(s)))
+			return (NULL);
 	opt.size = ft_strlen(lst->var);
 	if (lst->pre[1] < opt.size && lst->pre[2])
 		opt.size = lst->pre[1];
@@ -86,7 +90,8 @@ char	*pf_putaddr(t_printf *lst, void *addr)
 
 	opt = pf_optnew();
 	opt.nb_zero = 2;
-	lst->var = utoa_base(lst, (unsigned long long)(addr), 16);
+	if (!(lst->var = utoa_base(lst, (unsigned long long)(addr), 16)))
+		return (NULL);
 	opt.size = ft_strlen(lst->var);
 	if (!lst->pre[1] && lst->pre[2] && lst->var[0] == '0')
 		opt.size = 0;

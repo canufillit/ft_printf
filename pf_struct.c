@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:57:09 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/08 16:59:39 by Sawyerf                                  */
+/*   Updated: 2018/12/09 04:08:17 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,13 @@ t_printf	*pf_prnew(char *str, int needconv)
 	t_printf *lst;
 	
 	if (!(lst = malloc(sizeof(t_printf))))
-		return (NULL);
-	lst->next = NULL;
-	if (str)
 	{
-		lst->var = ft_strdup(str);
-		free(str);
+		if (str)
+			free(str);
+		return (NULL);
 	}
-	else
-		lst->var = NULL;
+	lst->next = NULL;
+	lst->var = NULL;
 	lst->needconv = needconv;
 	lst->settings[0] = '\0';
 	lst->size[0] = '\0';
@@ -79,6 +77,15 @@ t_printf	*pf_prnew(char *str, int needconv)
 	lst->pre[0] = 0;
 	lst->pre[1] = 0;
 	lst->pre[2] = 0;
+	if (str)
+	{
+		if (!(lst->var = ft_strdup(str)))
+		{
+			free(lst);
+			lst = NULL;
+		}
+		free(str);
+	}
 	return (lst);
 }
 

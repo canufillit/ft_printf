@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_router.c                                        :+:      :+:    :+:   */
+/*   pf_router.c                                                              */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/07 16:07:42 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/09 04:22:10 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	pf_router_d(t_printf *lst, va_list ap)
 		stoa_base(lst, va_arg(ap, intmax_t), pf_base(lst->type));
 	else if (lst->size[0] == '\0')
 		stoa_base(lst, va_arg(ap, int), pf_base(lst->type));
-	lst->opt = pf_len(lst, pf_optnew());
+	if (lst->var)
+		lst->opt = pf_len(lst, pf_optnew());
 }
 
 void	pf_router_u(t_printf *lst, va_list ap)
@@ -60,7 +61,8 @@ void	pf_router_u(t_printf *lst, va_list ap)
 		utoa_base(lst, va_arg(ap, uintmax_t), pf_base(lst->type));
 	else if (lst->size[0] == '\0')
 		utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
-	lst->opt = pf_lenu(lst, pf_optnew());
+	if (lst->var)
+		lst->opt = pf_lenu(lst, pf_optnew());
 }
 
 void	pf_router_f(t_printf *lst, va_list ap)
@@ -69,7 +71,8 @@ void	pf_router_f(t_printf *lst, va_list ap)
 		pf_ftoa_exep(lst, va_arg(ap, double));
 	else
 		pf_ftoa(lst, va_arg(ap, double));
-	lst->opt = pf_len_f(lst, pf_optnew());
+	if (lst->var)
+		lst->opt = pf_len_f(lst, pf_optnew());
 }
 
 int		pf_router(t_printf *lst, va_list ap)
@@ -79,7 +82,7 @@ int		pf_router(t_printf *lst, va_list ap)
 	tmp = lst;
 	while (tmp)
 	{
-		if (!tmp->needconv)
+		if (!tmp->needconv && tmp->var)
 			tmp->len = ft_strlen(tmp->var);
 		else if (tmp->type == 'f' || tmp->type == 'F')
 			pf_router_f(tmp, ap);

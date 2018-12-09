@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   pf_parsing.c                                                             */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/06 18:46:18 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/09 03:33:37 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ t_printf	*analyze(const char *str, int *count)
 {
 	t_printf	*lst;
 
-	lst = pf_prnew(NULL, 1);
+	if (!(lst = pf_prnew(NULL, 1)))
+		return (NULL);
 	while (str[*count])
 	{
 		if (str[*count] >= '1' && str[*count] <= '9')

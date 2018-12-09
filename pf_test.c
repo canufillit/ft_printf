@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 01:54:23 by Sawyerf                                  */
+/*   Updated: 2018/12/09 04:16:22 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,7 +282,7 @@ int	main(int ac, char **av)
 		test_s("");
 		test_s(NULL);
 		//%p
-		test_p(ft_strdup("abc"));
+	//	test_p(ft_strdup("abc"));
 		test_p(ft_printf);
 		test_p(NULL);
 		//%f

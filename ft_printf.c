@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                                              */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:22:48 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/07 15:16:12 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/09 03:59:42 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,16 @@ char	*ret(t_printf *lst, int len)
 	char	*s;
 	char	*tmp;
 
-	s = ft_strnew(len);
+	if (!(s = ft_strnew(len)))
+		return (NULL);
 	tmp = s;
 	while (lst)
 	{
+		if (!lst->var)
+		{
+			free(s);
+			return (NULL);
+		}
 		if (!lst->needconv)
 			ft_strcpy(tmp, lst->var);
 		else
