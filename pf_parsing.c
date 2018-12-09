@@ -6,13 +6,13 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:07:19 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 17:17:18 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/09 18:16:05 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_passnb(const char *str, int *count)
+int			pf_passnb(const char *str, int *count)
 {
 	int tmp;
 
@@ -27,6 +27,13 @@ int		pf_passnb(const char *str, int *count)
 	return (tmp);
 }
 
+void		pf_point(t_printf *lst, const char *str, int *count)
+{
+	(*count)++;
+	lst->pre[2] = 1;
+	lst->pre[1] = pf_passnb(str, count);
+}
+
 t_printf	*analyze(const char *str, int *count)
 {
 	t_printf	*lst;
@@ -38,17 +45,13 @@ t_printf	*analyze(const char *str, int *count)
 		if (str[*count] >= '1' && str[*count] <= '9')
 			lst->pre[0] = pf_passnb(str, count);
 		else if (str[*count] == '.')
-		{
-			(*count)++;
-			lst->pre[2] = 1;
-			lst->pre[1] = pf_passnb(str, count);
-		}
+			pf_point(lst, str, count);
 		else if (ft_cisin("-+#0 ", str[*count]))
 			(!ft_cisin(lst->settings, str[*count])) ? ft_strncat(lst->settings,
-				&str[*count], 1) : 0;
+					&str[*count], 1) : 0;
 		else if (ft_cisin("lhzj", str[*count]))
-			(ft_strlen(lst->size) < 2) ? ft_strncat(lst->size, 
-				&str[*count], 1) : 0;
+			(ft_strlen(lst->size) < 2) ? ft_strncat(lst->size,
+					&str[*count], 1) : 0;
 		else
 			break ;
 		(*count)++;
@@ -57,6 +60,12 @@ t_printf	*analyze(const char *str, int *count)
 		return (NULL);
 	lst->type = str[*count];
 	return (lst);
+}
+
+void		pf_set(const char **str, int *count, int n)
+{
+	*str += *count + 1;
+	*count = n;
 }
 
 t_printf	*parser(const char *str)
@@ -75,13 +84,11 @@ t_printf	*parser(const char *str)
 				return (NULL);
 			if (count)
 				lst = ft_pushback(lst, pf_prnew(ft_strndup(str, count), 0));
-			str += count + 1;
-			count = 0;
+			pf_set(&str, &count, 0);
 			if (!(tmp = analyze(str, &count)))
 				return (NULL);
 			lst = ft_pushback(lst, tmp);
-			str += count + 1;
-			count = -1;
+			pf_set(&str, &count, -1);
 		}
 		count++;
 	}
