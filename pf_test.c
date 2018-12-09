@@ -6,25 +6,35 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 01:11:23 by Sawyerf                                  */
+/*   Updated: 2018/12/09 01:54:23 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include <time.h>
 
+clock_t time1 = 0;
+clock_t time2 = 0;
+int		test = 0;
 
 void	pf_print_s(char *s, char *var)
 {
 	int lol;
 	int lol2;
+	clock_t t;
 	
+	test++;
 	lol = 0;
 	ft_printf("\x1b[0mft_printf: |");
+	t = clock();
 	lol = ft_printf(s, var);
+	time1 += clock() - t;
 	ft_printf("|\n");
 	printf("   printf: |");
+	t = clock();
 	lol2 = printf(s, var);
+	time2 += clock() - t;
 	printf("|\n");
 	if (lol != lol2)
 		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
@@ -36,13 +46,19 @@ void	pf_print_x(char *s, unsigned int var)
 {
 	int lol;
 	int lol2;
+	clock_t t;
 	
+	test++;
 	lol = 0;
 	ft_printf("\x1b[0mft_printf: |");
+	t = clock();
 	lol = ft_printf(s, var);
+	time1 += clock() - t;
 	ft_printf("|\n");
 	printf("   printf: |");
+	t = clock();
 	lol2 = printf(s, var);
+	time2 += clock() - t;
 	printf("|\n");
 	if (lol != lol2)
 		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
@@ -54,12 +70,19 @@ void	pf_print_c(char *s, char var)
 {
 	int lol;
 	int lol2;
-
+	clock_t t;
+	
+	test++;
+	lol = 0;
 	ft_printf("\x1b[0mft_printf: |");
+	t = clock();
 	lol = ft_printf(s, var);
+	time1 += clock() - t;
 	ft_printf("|\n");
 	printf("   printf: |");
+	t = clock();
 	lol2 = printf(s, var);
+	time2 += clock() - t;
 	printf("|\n");
 	if (lol != lol2)
 		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
@@ -71,12 +94,19 @@ void	pf_print_d(char *s, int var)
 {
 	int lol;
 	int lol2;
-
+	clock_t t;
+	
+	test++;
+	lol = 0;
 	ft_printf("\x1b[0mft_printf: |");
+	t = clock();
 	lol = ft_printf(s, var);
+	time1 += clock() - t;
 	ft_printf("|\n");
 	printf("   printf: |");
+	t = clock();
 	lol2 = printf(s, var);
+	time2 += clock() - t;
 	printf("|\n");
 	if (lol != lol2)
 		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
@@ -88,13 +118,19 @@ void	pf_print_p(char *s,void *var)
 {
 	int lol;
 	int lol2;
+	clock_t t;
 	
+	test++;
 	lol = 0;
 	ft_printf("\x1b[0mft_printf: |");
+	t = clock();
 	lol = ft_printf(s, var);
+	time1 += clock() - t;
 	ft_printf("|\n");
 	printf("   printf: |");
+	t = clock();
 	lol2 = printf(s, var);
+	time2 += clock() - t;
 	printf("|\n");
 	if (lol != lol2)
 		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
@@ -106,12 +142,19 @@ void	pf_print_f(char *s, float var)
 {
 	int lol;
 	int lol2;
-
+	clock_t t;
+	
+	test++;
+	lol = 0;
 	ft_printf("\x1b[0mft_printf: |");
+	t = clock();
 	lol = ft_printf(s, var);
+	time1 += clock() - t;
 	ft_printf("|\n");
 	printf("   printf: |");
+	t = clock();
 	lol2 = printf(s, var);
+	time2 += clock() - t;
 	printf("|\n");
 	if (lol != lol2)
 		printf("\x1b[31m [ERROR] %s, %d != %d\x1b[0m\n", s, lol, lol2);
@@ -218,30 +261,48 @@ void	test_x(unsigned int nb){
 	pf_print_x("%.x",		nb);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	//%d
-	test_d(1232);
-	test_d(-100);
-	test_d(-2);
-	//%s
-	test_s("abc");
-	test_s("");
-	test_s(NULL);
-	//%p
-	test_p(ft_strdup("abc"));
-	test_p(ft_printf);
-	test_p(NULL);
-	//%f
-	//test_f(12313);
-	//test_f(0.0);
-	//test_f(0.00000000001);
-	//test_f(-0.00000000001);
-	//test_f(-1);
-	//%c
-	test_c(42);
-	test_c(0);
-	//%x
-	test_x(42);
-	test_x(0);
+	int count;
+	int max;
+
+	if (ac > 1)
+		max = ft_atoi(av[1]);
+	else
+		max = 1;
+	count = 0;
+	while (count++ < max)
+	{
+		//%d
+		test_d(1232);
+		test_d(-100);
+		test_d(-2);
+		//%s
+		test_s("abc");
+		test_s("");
+		test_s(NULL);
+		//%p
+		test_p(ft_strdup("abc"));
+		test_p(ft_printf);
+		test_p(NULL);
+		//%f
+		test_f(12313);
+		test_f(0.0);
+		test_f(0.00000000001);
+		test_f(-0.00000000001);
+		test_f(-1);
+		//%c
+		test_c(42);
+		test_c(0);
+		//%x
+		test_x(42);
+		test_x(0);
+	}
+	float t1 = ((float)time1)/CLOCKS_PER_SEC;
+    float t2 = ((float)time2)/CLOCKS_PER_SEC;
+	printf("for %d tests:\n", test);
+	printf("[time] ft_printf = %f\n", t1);
+	printf("[time]    printf = %f\n", t2);
+	printf("[time]    %f\n", t1/t2);
+	printf("[time]    %f\n", (t2/t1) * 100);
 }
