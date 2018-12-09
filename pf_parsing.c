@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_parsing.c                                                             */
+/*   pf_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 15:04:57 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 03:33:37 by Sawyerf                                  */
+/*   Created: 2018/12/09 17:07:19 by apeyret           #+#    #+#             */
+/*   Updated: 2018/12/09 17:17:18 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,11 @@ t_printf	*analyze(const char *str, int *count)
 			lst->pre[1] = pf_passnb(str, count);
 		}
 		else if (ft_cisin("-+#0 ", str[*count]))
-		{
-			if (!ft_cisin(lst->settings, str[*count]))
-				ft_strncat(lst->settings, &str[*count], 1);
-		}
+			(!ft_cisin(lst->settings, str[*count])) ? ft_strncat(lst->settings,
+				&str[*count], 1) : 0;
 		else if (ft_cisin("lhzj", str[*count]))
-		{
-			if (ft_strlen(lst->size) < 2)
-				ft_strncat(lst->size, &str[*count], 1);
-		}
+			(ft_strlen(lst->size) < 2) ? ft_strncat(lst->size, 
+				&str[*count], 1) : 0;
 		else
 			break ;
 		(*count)++;
