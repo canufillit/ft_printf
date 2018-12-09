@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_router.c                                                              */
+/*   pf_router.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 13:37:11 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 04:22:10 by Sawyerf                                  */
+/*   Created: 2018/12/09 18:18:00 by glavigno          #+#    #+#             */
+/*   Updated: 2018/12/09 18:24:59 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		lenall(t_printf *lst)
-{
-	int nb;
-
-	nb = 0;
-	while (lst)
-	{
-		nb += lst->len;
-		lst = lst->next;
-	}
-	return (nb);
-}
 
 void	pf_router_d(t_printf *lst, va_list ap)
 {
@@ -52,9 +39,11 @@ void	pf_router_u(t_printf *lst, va_list ap)
 	else if (lst->size[0] == 'l' || lst->type == 'O')
 		utoa_base(lst, va_arg(ap, unsigned long), pf_base(lst->type));
 	else if (lst->size[1] == 'h')
-		utoa_base(lst, (unsigned char)va_arg(ap, unsigned int), pf_base(lst->type));
+		utoa_base(lst, (unsigned char)va_arg(ap, unsigned int),
+				pf_base(lst->type));
 	else if (lst->size[0] == 'h')
-		utoa_base(lst, (unsigned short)va_arg(ap, unsigned int), pf_base(lst->type));
+		utoa_base(lst, (unsigned short)va_arg(ap, unsigned int),
+				pf_base(lst->type));
 	else if (lst->size[0] == 'z')
 		utoa_base(lst, va_arg(ap, size_t), pf_base(lst->type));
 	else if (lst->size[0] == 'j')
@@ -75,7 +64,7 @@ void	pf_router_f(t_printf *lst, va_list ap)
 		lst->opt = pf_len_f(lst, pf_optnew());
 }
 
-int		pf_router(t_printf *lst, va_list ap)
+void	pf_router(t_printf *lst, va_list ap)
 {
 	t_printf	*tmp;
 
@@ -92,8 +81,9 @@ int		pf_router(t_printf *lst, va_list ap)
 			pf_putchar(tmp, va_arg(ap, int));
 		else if (tmp->type == 'd' || tmp->type == 'i' || tmp->type == 'D')
 			pf_router_d(tmp, ap);
-		else if (tmp->type == 'u' || tmp->type == 'o' || tmp->type == 'x'
-			|| tmp->type == 'X' || tmp->type == 'b' || tmp->type == 'U' || tmp->type == 'O')
+		else if (tmp->type == 'u' || tmp->type == 'o' || tmp->type == 'x' ||
+				tmp->type == 'X' || tmp->type == 'b' || tmp->type == 'U'
+				|| tmp->type == 'O')
 			pf_router_u(tmp, ap);
 		else if (tmp->type == 'p')
 			pf_putaddr(tmp, va_arg(ap, void*));
@@ -101,5 +91,4 @@ int		pf_router(t_printf *lst, va_list ap)
 			pf_putchar(tmp, tmp->type);
 		tmp = tmp->next;
 	}
-	return (lenall(lst));
 }
