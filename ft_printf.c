@@ -6,25 +6,11 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 15:22:48 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 15:09:39 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/09 16:58:06 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	pf_prdel(t_printf *lst)
-{
-	t_printf	*tmp;
-
-	while (lst)
-	{
-		tmp = lst->next;
-		if (lst->var)
-			ft_strdel(&(lst->var));
-		free(lst);
-		lst = tmp;
-	}
-}
 
 void	ft_replace(char *s, char c1, char c2, int len)
 {

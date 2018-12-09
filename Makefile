@@ -6,7 +6,7 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/12/09 04:09:14 by Sawyerf                                   #
+#    Updated: 2018/12/09 16:11:25 by apeyret          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ check:
 	-@cat $(CHECK) | grep ft_strndup	| grep -v "if (\!(" 
 	-@cat $(CHECK) | grep malloc    	| grep -v "if (\!(" 
 	-@cat $(CHECK) | grep printf		| grep -v ft_printf	| grep -v t_printf
+	@norminette $(CHECK)
 
 $(NAME): $(OBJ)
 	@printf "[Printf] Compilation [OK]\n"
