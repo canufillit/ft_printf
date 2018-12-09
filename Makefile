@@ -6,7 +6,7 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/12/09 17:06:16 by glavigno         ###   ########.fr        #
+#    Updated: 2018/12/09 18:38:41 by glavigno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC =	ft_printf.c \
 		pf_put.c \
 		pf_router.c \
 		pf_struct.c \
+		pf_utils.c \
 		pf_test.c
 
 CHECK =	ft_printf.c \
@@ -31,11 +32,12 @@ CHECK =	ft_printf.c \
 		pf_parsing.c \
 		pf_put.c \
 		pf_router.c \
+		pf_utils.c \
 		pf_struct.c
 
 CC = gcc
 
-CFLAGS = -I libft/ #-Wall -Werror -Wextra 
+CFLAGS = -I libft/ -Wall -Werror -Wextra 
 
 DEBUG= #-g3 -fsanitize=address
 
