@@ -36,11 +36,11 @@ char	*add_base_prefix(t_opt opt, char *s)
 	return (s);
 }
 
-char		*pf_options(t_printf *lst, t_opt opt)
+char		*pf_options(char *s, t_opt opt)
 {
 	char *tmp;
 
-	tmp = lst->var;
+	tmp = s;
 // ajouter espace
 	pf_addc(opt.tmp, opt.nb_sp + opt.nb_p, ' ');
 // ajouter le signe
@@ -49,12 +49,9 @@ char		*pf_options(t_printf *lst, t_opt opt)
 	add_base_prefix(opt, opt.tmp);
 // ajouter '0' (.nb)
 	pf_addc(opt.tmp + opt.nb_sp + opt.nb_zero + opt.nb_p + opt.nb_sig, opt.nb_0, '0');
-	if (tmp[0] == '-')
+	if (tmp[0] == '-' && opt.nb_sig)
 		tmp++;
 	ft_strncat(opt.tmp, tmp, opt.size);
 	pf_addc(opt.tmp + opt.size + opt.nb_0 + opt.nb_sp + opt.nb_zero + opt.nb_p + opt.nb_sig, opt.nb_spe, ' ');
-	free(lst->var);
-	lst->var = ft_strdup(opt.tmp);
-	free(opt.tmp);
-	return (lst->var);
+	return (opt.tmp);
 }

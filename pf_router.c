@@ -41,8 +41,7 @@ void	pf_router_d(t_printf *lst, va_list ap)
 		stoa_base(lst, va_arg(ap, intmax_t), pf_base(lst->type));
 	else if (lst->size[0] == '\0')
 		stoa_base(lst, va_arg(ap, int), pf_base(lst->type));
-	pf_options(lst, pf_len(lst, pf_optnew()));
-	ft_putstr(lst->var);
+	lst->opt = pf_len(lst, pf_optnew());
 }
 
 void	pf_router_u(t_printf *lst, va_list ap)
@@ -61,10 +60,7 @@ void	pf_router_u(t_printf *lst, va_list ap)
 		utoa_base(lst, va_arg(ap, uintmax_t), pf_base(lst->type));
 	else if (lst->size[0] == '\0')
 		utoa_base(lst, va_arg(ap, unsigned int), pf_base(lst->type));
-	pf_options(lst, pf_lenu(lst, pf_optnew()));
-	if (lst->type == 'x')
-		lst->var = ft_strlower(lst->var);
-	ft_putstr(lst->var);
+	lst->opt = pf_lenu(lst, pf_optnew());
 }
 
 void	pf_router_f(t_printf *lst, va_list ap)
@@ -73,8 +69,7 @@ void	pf_router_f(t_printf *lst, va_list ap)
 		pf_ftoa_exep(lst, va_arg(ap, double));
 	else
 		pf_ftoa(lst, va_arg(ap, double));
-	lst->var = pf_options(lst, pf_len_f(lst, pf_optnew()));
-	ft_putstr(lst->var);
+	lst->opt = pf_len_f(lst, pf_optnew());
 }
 
 int		pf_router(t_printf *lst, va_list ap)
@@ -85,23 +80,22 @@ int		pf_router(t_printf *lst, va_list ap)
 	while (tmp)
 	{
 		if (!tmp->needconv)
-			ft_putstr(tmp->var);
+			tmp->len = ft_strlen(tmp->var);
 		else if (tmp->type == 'f' || tmp->type == 'F')
 			pf_router_f(tmp, ap);
 		else if (tmp->type == 's')
-			tmp->var = pf_putstr(tmp, va_arg(ap, char*));
+			pf_putstr(tmp, va_arg(ap, char*));
 		else if (tmp->type == 'c')
-			tmp->var = pf_putchar(tmp, va_arg(ap, int));
+			pf_putchar(tmp, va_arg(ap, int));
 		else if (tmp->type == 'd' || tmp->type == 'i' || tmp->type == 'D')
 			pf_router_d(tmp, ap);
 		else if (tmp->type == 'u' || tmp->type == 'o' || tmp->type == 'x'
 			|| tmp->type == 'X' || tmp->type == 'b' || tmp->type == 'U' || tmp->type == 'O')
 			pf_router_u(tmp, ap);
 		else if (tmp->type == 'p')
-			tmp->var = pf_putaddr(tmp, va_arg(ap, void*));
+			pf_putaddr(tmp, va_arg(ap, void*));
 		else
-			tmp->var = pf_putchar(tmp, tmp->type);
-		tmp->len = ft_strlen(tmp->var);
+			pf_putchar(tmp, tmp->type);
 		tmp = tmp->next;
 	}
 	return (lenall(lst));

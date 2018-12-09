@@ -6,7 +6,7 @@
 #    By: glavigno <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:48:50 by glavigno          #+#    #+#              #
-#    Updated: 2018/12/08 18:20:50 by Sawyerf                                   #
+#    Updated: 2018/12/09 00:56:56 by Sawyerf                                   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CC = gcc
 
 CFLAGS = -I libft/ -Wall -Werror -Wextra 
 
-DEBUG= #-g3 -fsanitize=address
+DEBUG= -g3 -fsanitize=address
 
 OBJ = $(SRC:.c=.o)
 

@@ -45,8 +45,7 @@ t_opt	pf_len_f(t_printf *lst, t_opt opt)
 		opt.nb_p = 1;
 	}
 // strnew
-	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_zero + opt.nb_sig)))
-		opt.tmp = NULL;
+	lst->len = opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_zero + opt.nb_sig;
 	return (opt);
 }
 
@@ -76,8 +75,7 @@ t_opt	pf_lenu(t_printf *lst, t_opt opt)
 	else if (opt.size + opt.nb_0 + opt.nb_sig + opt.nb_p < lst->pre[0] && c == '0')
 		opt.nb_0 += lst->pre[0] - opt.size - opt.nb_sig + opt.nb_0 - opt.nb_p - opt.nb_zero;
 // strnew
-	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_zero + opt.nb_sig)))
-		opt.tmp = NULL;
+	lst->len = opt.size + opt.nb_0 + opt.nb_sp + opt.nb_p + opt.nb_zero + opt.nb_sig + opt.nb_spe;
 	return (opt);
 }
 
@@ -119,7 +117,6 @@ t_opt	pf_len(t_printf *lst, t_opt opt)
 		opt.nb_p = 1;
 	}
 // strnew
-	if (!(opt.tmp = ft_strnew(opt.nb_sig + opt.nb_zero + opt.nb_p + opt.nb_0 + opt.size + opt.nb_spe + opt.nb_sp)))
-		opt.tmp = NULL;
+	lst->len = opt.nb_sig + opt.nb_zero + opt.nb_p + opt.nb_0 + opt.size + opt.nb_spe + opt.nb_sp;
 	return (opt);
 }

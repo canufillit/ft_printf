@@ -21,17 +21,6 @@
 # include <stddef.h>
 # include <inttypes.h>
 
-typedef struct		s_printf
-{
-	int				needconv;
-	int				len;
-	char			*var;
-	char			settings[5];
-	char			type;
-	int				pre[3];
-	char			size[2];
-	struct s_printf	*next;
-}					t_printf;
 
 typedef struct		s_base
 {
@@ -52,6 +41,19 @@ typedef struct		s_opt
 	int				nb_spe;
 }					t_opt;
 
+typedef struct		s_printf
+{
+	int				needconv;
+	int				len;
+	char			*var;
+	char			settings[5];
+	char			type;
+	int				pre[3];
+	char			size[2];
+	t_opt			opt;
+	struct s_printf	*next;
+}					t_printf;
+
 t_printf		*parser(const char *str);
 int				pf_router(t_printf *lst, va_list ap);
 t_opt			pf_optnew();
@@ -60,7 +62,7 @@ t_opt			pf_lenu(t_printf *lst, t_opt opt);
 t_opt			pf_len_f(t_printf *lst, t_opt opt);
 char			*utoa_base(t_printf *lst, unsigned long long n, int b);
 char			*stoa_base(t_printf *lst, long long n, int b);
-char			*pf_options(t_printf *lst, t_opt opt);
+char			*pf_options(char *s, t_opt opt);
 int				ft_cisin(char *s, char c);
 char			*pf_putstr(t_printf *lst, const char *s);
 int				ft_printf(const char *format, ...);

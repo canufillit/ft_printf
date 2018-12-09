@@ -32,7 +32,7 @@ char	*pf_putchar(t_printf *lst, const char c)
 	t_opt	opt;
 
 	lst->var = ft_strnew(1);
-	lst->var[0] = '*';
+	lst->var[0] = c;
 	opt = pf_optnew();
 	opt.size = 1;
 	if (lst->pre[0] > 1 && ft_cisin(lst->settings, '-'))
@@ -41,17 +41,17 @@ char	*pf_putchar(t_printf *lst, const char c)
 		opt.nb_0 = lst->pre[0] - 1;
 	else if (lst->pre[0] > 1)
 		opt.nb_sp = lst->pre[0] - 1;
-	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_spe + opt.nb_0 + opt.nb_sp)))
-		return (NULL);
-	lst->var = pf_options(lst, opt);
-	pf_putstrr(lst->var, c);
+	lst->len = opt.size + opt.nb_spe + opt.nb_0 + opt.nb_sp;
+	lst->opt = opt;
 	return (lst->var);
 }
 
 char 	*pf_retnull(t_printf *lst)
 {
 	lst->var = ft_strdup("(null)");
-	ft_putstr(lst->var);
+	lst->opt = pf_optnew();
+	lst->opt.size = 6;
+	lst->len = 6;
 	return (lst->var);
 }
 
@@ -75,10 +75,8 @@ char	*pf_putstr(t_printf *lst, const char *s)
 		opt.nb_0 = lst->pre[0] - opt.size;
 	else if (lst->pre[0] > opt.size)
 		opt.nb_sp = lst->pre[0] - opt.size;
-	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_spe + opt.nb_0 + opt.nb_sp)))
-		return (NULL);
-	pf_options(lst, opt);
-	ft_putstr(lst->var);
+	lst->len = opt.size + opt.nb_spe + opt.nb_0 + opt.nb_sp;
+	lst->opt = opt;
 	return (lst->var);
 }
 
@@ -98,12 +96,9 @@ char	*pf_putaddr(t_printf *lst, void *addr)
 		opt.nb_spe = lst->pre[0] - opt.size - 2;
 	else if (lst->pre[0] > opt.size + 2&& ft_cisin(lst->settings, '0'))
 		opt.nb_0 = lst->pre[0] - opt.size - 2;
-	else if (lst->pre[0] > opt.size + 2)
+	else if (lst->pre[0] > opt.size + opt.nb_0 + 2)
 		opt.nb_sp = lst->pre[0] - opt.size - 2;
-	if (!(opt.tmp = ft_strnew(opt.size + opt.nb_zero)))
-		return (NULL);
-	lst->var = pf_options(lst, opt);
-	ft_strlower(lst->var);
-	ft_putstr(lst->var);
+	lst->len = opt.size + opt.nb_zero + opt.nb_sp + opt.nb_spe + opt.nb_0;
+	lst->opt = opt;
 	return (lst->var);
 }

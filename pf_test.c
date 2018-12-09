@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:45:25 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/08 20:30:33 by Sawyerf                                  */
+/*   Updated: 2018/12/09 01:11:23 by Sawyerf                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	pf_print_s(char *s, char *var)
 		printf("\x1b[32m [GOOD] %s\x1b[0m\n", s);
 }
 
-void	pf_print_x(char *s, char *var)
+void	pf_print_x(char *s, unsigned int var)
 {
 	int lol;
 	int lol2;
@@ -233,11 +233,11 @@ int	main(void)
 	test_p(ft_printf);
 	test_p(NULL);
 	//%f
-	test_f(12313);
-	test_f(0.0);
-	test_f(0.00000000001);
-	test_f(-0.00000000001);
-	test_f(-1);
+	//test_f(12313);
+	//test_f(0.0);
+	//test_f(0.00000000001);
+	//test_f(-0.00000000001);
+	//test_f(-1);
 	//%c
 	test_c(42);
 	test_c(0);
