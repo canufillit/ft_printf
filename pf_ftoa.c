@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 19:04:34 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/09 15:50:56 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/09 16:16:01 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	*pf_ftoa_exep(t_printf *lst, double n)
 
 	pre = (lst->pre[1]) ? lst->pre[1] : 0;
 	ipart = (long long)n;
+	ipart = (n < 0) ? -ipart : ipart;
 	len = len_cal(ipart, 10);
 	ipart = ((ipart % ft_pow(10, len)) > 5) ? ipart + 1 : ipart;
 	if (!(lst->var = (n < 0) ? ft_strnew(len + pre + 1) : ft_strnew(len + pre + 2)))
