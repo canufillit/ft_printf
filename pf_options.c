@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:03:48 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/09 17:50:51 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/10 09:37:47 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@ char	*pf_addc(char *s, int n, char c)
 	int count;
 
 	count = 0;
-	while (n > count)
-	{
-		s[count] = c;
-		count++;
-	}
+	while (count < n)
+		s[count++] = c;
 	s[count] = '\0';
 	return (s);
 }
