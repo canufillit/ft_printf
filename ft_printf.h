@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 18:44:50 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/09 18:51:19 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/10 09:21:41 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,20 @@ typedef struct		s_printf
 }					t_printf;
 
 t_printf			*parser(const char *str);
-void				pf_router(t_printf *lst, va_list ap);
+t_printf			*ft_pushback(t_printf *lst, t_printf *add);
+t_printf			*pf_prnew(char *str, int needconv);
 t_opt				pf_optnew(void);
 t_opt				pf_len(t_printf *lst, t_opt opt);
 t_opt				pf_lenu(t_printf *lst, t_opt opt);
 t_opt				pf_len_f(t_printf *lst, t_opt opt);
+int					lenall(t_printf *lst);
+int					ft_cisin(char *s, char c);
+int					ft_printf(const char *format, ...);
+int					pf_base(char c);
 char				*utoa_base(t_printf *lst, unsigned long long n, int b);
 char				*stoa_base(t_printf *lst, long long n, int b);
 char				*pf_options(char *s, t_opt opt);
-int					ft_cisin(char *s, char c);
 char				*pf_putstr(t_printf *lst, const char *s);
-int					ft_printf(const char *format, ...);
-t_printf			*ft_pushback(t_printf *lst, t_printf *add);
-t_printf			*pf_prnew(char *str, int needconv);
-int					pf_base(char c);
 char				*pf_putaddr(t_printf *lst, void *addr);
 char				*pf_putchar(t_printf *lst, char c);
 char				*pf_addsp(char *s, int n);
@@ -74,6 +74,6 @@ char				*pf_ftoa(t_printf *lst, double n);
 char				*pf_ftoa_exep(t_printf *lst, double n);
 void				pf_prdel(t_printf *lst);
 void				ft_replace(char *s, char c1, char c2, int len);
-int					lenall(t_printf *lst);
+void				pf_router(t_printf *lst, va_list ap);
 
 #endif

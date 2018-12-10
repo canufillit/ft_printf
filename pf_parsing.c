@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:07:19 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/09 18:16:05 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/10 09:20:30 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_printf	*parser(const char *str)
 		}
 		count++;
 	}
-	if (count != 0)
+	if (count)
 		lst = ft_pushback(lst, pf_prnew(ft_strndup(str, count), 0));
 	return (lst);
 }

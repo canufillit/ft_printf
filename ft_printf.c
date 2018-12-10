@@ -6,13 +6,13 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 18:28:55 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/09 18:33:35 by glavigno         ###   ########.fr       */
+/*   Updated: 2018/12/10 09:20:27 by glavigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	pf_nike(t_printf *lst, char *tmp)
+void	pf_cpy_spec(t_printf *lst, char *tmp)
 {
 	lst->opt.tmp = tmp;
 	if (lst->type == 'c')
@@ -41,8 +41,8 @@ char	*ret(t_printf *lst, int len)
 		if (!lst->needconv)
 			ft_strcpy(tmp, lst->var);
 		else
-			pf_nike(lst, tmp);
-		tmp = tmp + lst->len;
+			pf_cpy_spec(lst, tmp);
+		tmp += lst->len;
 		lst = lst->next;
 	}
 	return (s);
