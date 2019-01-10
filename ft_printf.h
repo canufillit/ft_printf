@@ -6,7 +6,7 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 18:44:50 by glavigno          #+#    #+#             */
-/*   Updated: 2019/01/10 14:39:01 by apeyret          ###   ########.fr       */
+/*   Updated: 2019/01/10 14:41:08 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ typedef struct		s_printf
 }					t_printf;
 
 int					ft_printf(const char *format, ...);
-int					ft_dprintf(int fd, const char *format, ...)
-char				*ft_zprintf(const char *format, ...)
+int					ft_dprintf(int fd, const char *format, ...);
+char				*ft_zprintf(const char *format, ...);
 t_printf			*parser(const char *str);
 t_printf			*ft_pushback(t_printf *lst, t_printf *add);
 t_printf			*pf_prnew(char *str, int needconv);
