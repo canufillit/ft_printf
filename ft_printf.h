@@ -6,18 +6,17 @@
 /*   By: glavigno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 18:44:50 by glavigno          #+#    #+#             */
-/*   Updated: 2018/12/10 09:21:41 by glavigno         ###   ########.fr       */
+/*   Updated: 2019/01/10 14:39:01 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include "libft.h"
 # include <unistd.h>
 # include <stdlib.h>
-# include "libft/libft.h"
 # include <stdarg.h>
-
 # include <inttypes.h>
 
 typedef struct		s_base
@@ -52,6 +51,9 @@ typedef struct		s_printf
 	struct s_printf	*next;
 }					t_printf;
 
+int					ft_printf(const char *format, ...);
+int					ft_dprintf(int fd, const char *format, ...)
+char				*ft_zprintf(const char *format, ...)
 t_printf			*parser(const char *str);
 t_printf			*ft_pushback(t_printf *lst, t_printf *add);
 t_printf			*pf_prnew(char *str, int needconv);
@@ -61,7 +63,6 @@ t_opt				pf_lenu(t_printf *lst, t_opt opt);
 t_opt				pf_len_f(t_printf *lst, t_opt opt);
 int					lenall(t_printf *lst);
 int					ft_cisin(char *s, char c);
-int					ft_printf(const char *format, ...);
 int					pf_base(char c);
 char				*utoa_base(t_printf *lst, unsigned long long n, int b);
 char				*stoa_base(t_printf *lst, long long n, int b);

@@ -6,7 +6,7 @@
 /*   By: apeyret <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 16:14:21 by apeyret           #+#    #+#             */
-/*   Updated: 2018/12/29 19:19:20 by apeyret          ###   ########.fr       */
+/*   Updated: 2018/12/29 19:17:27 by apeyret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_printf		*pf_prnew(char *str, int needconv)
 {
 	t_printf *lst;
 
+	lst = NULL;
 	if (!(lst = malloc(sizeof(t_printf))))
 		ft_strdel(&str);
 	if (!lst)
