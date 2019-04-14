@@ -85,21 +85,21 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 %.o: %.c
-	@printf "\x1B[0;32m[Libft] Compilation [o.] \r"
+	@printf "\x1B[0;32m[Libft] Compilation [o.] \x1B[0;0m\r"
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "\x1B[0;32m[Libft] Compilation [.o] \r"
+	@printf "\x1B[0;32m[Libft] Compilation [.o] \x1B[0;0m\r"
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@printf "\x1B[0;32m[Libft] Compilation [OK]\n"
+	@printf "\x1B[0;32m[Libft] Compilation [OK]\x1B[0;0m\n"
 
 clean:
 	@/bin/rm -f $(OBJ)
-	@printf "\033[0;31m[Libft] Deleted *.o\n"
+	@printf "\033[0;31m[Libft] Deleted *.o\x1B[0;0m\n"
 
 nofclean:
 	@/bin/rm -f $(NAME)
-	@printf "\033[0;31m[Libft] Deleted libft.a\n"
+	@printf "\033[0;31m[Libft] Deleted libft.a\x1B[0;0m\n"
 
 fclean: nofclean clean
 
