@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME =		ft_printf 
+NAME =		libftprintf.a
 
 CC =		gcc	
 
@@ -59,7 +59,8 @@ norm:
 $(NAME): $(OBJ)
 	@printf "\033[0;32m[ft_printf] Compilation [OK]\033[0;0m\n"
 	@make -C libft/
-	@ar rc $(NAME) $(OBJ) libft/libft.a
+	@cp libft/libft.a $(NAME)
+	@ar rc $(NAME) $(OBJ)
 
 clean:
 	@make clean -C libft/
